@@ -17,20 +17,24 @@ module.exports = {
 
       ...defaultTheme.screens
     },
-    colors: {
-      ...defaultTheme.colors,
-      background: '#ffebed',
-      heading: '#3d3335',
-      paragraph: '#89797a',
-      nav: '#334954',
-      action: '#f63959',
-      alt: '#b75c6d'
-    },
+
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+      },
+      colors: {
+        background: '#ffebed',
+        heading: '#3d3335',
+        paragraph: '#89797a',
+        nav: '#334954',
+        action: '#f63959',
+        alt: '#b75c6d'
+      },
+      fontFamily: {
+        heading: ['var(--font-fraunces)'],
+        paragraph: ['var(--font-dm-sans)']
       }
     }
   },
