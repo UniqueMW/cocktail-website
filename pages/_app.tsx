@@ -12,7 +12,7 @@ const dmSans = DM_Sans({
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <main className={`${fraunces.variable} ${dmSans.variable}`}>
+    <main className={`${fraunces.variable} ${dmSans.variable} bg-background`}>
       <Component {...pageProps} />
     </main>
   )
