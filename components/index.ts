@@ -1,3 +1,5 @@
-import Example from './Example/Example'
+import Nav from './Nav/Nav'
+import NavLink from './NavLink/NavLink'
+import SearchBar from './SearchBar/SearchBar'
 
-export { Example }
+export { Nav, NavLink, SearchBar }
