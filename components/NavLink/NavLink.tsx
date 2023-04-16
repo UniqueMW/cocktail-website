@@ -4,7 +4,6 @@ import Link from 'next/link'
 // handle icons for nav link
 
 interface INavLinkProps {
-  text: string
   href: string
   icon?: boolean
   children?: React.ReactNode
@@ -26,7 +25,7 @@ function NavLink(props: INavLinkProps): JSX.Element {
       href={props.href}
       className="text-xl capitalize font-heading tracking-wider text-paragraph"
     >
-      {props.text}
+      {props.children}
     </Link>
   )
 }

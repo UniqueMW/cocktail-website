@@ -2,7 +2,7 @@ import React from 'react'
 import '@/styles/globals.css'
 import { Fraunces, DM_Sans } from 'next/font/google'
 import type { AppProps } from 'next/app'
-import { Nav } from 'components'
+import { Nav, MobileNav } from 'components'
 
 const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces' })
 const dmSans = DM_Sans({
@@ -15,6 +15,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <main className={`${fraunces.variable} ${dmSans.variable} bg-background`}>
       <Nav />
+      <MobileNav />
       <Component {...pageProps} />
     </main>
   )

@@ -13,12 +13,13 @@ function Nav(): JSX.Element {
         UniqueMW
       </Link>
       <div className="flex flex-row justify-evenly items-center space-x-4">
-        <NavLink text="Home" href="/" />
-        <NavLink text="Category" href="/category" />
-        <NavLink text="Ingredients" href="/category" />
-        <NavLink text="Glasses" href="/category" />
+        <NavLink href="/">home</NavLink>
+        <NavLink href="/category">Category</NavLink>
+        <NavLink href="/category">Ingredients</NavLink>
+        <NavLink href="/category">Glasses</NavLink>
+
         <SearchBar />
-        <NavLink text="Bookmark" href="/category" icon>
+        <NavLink href="/category" icon>
           <BiBookmarks />
         </NavLink>
       </div>
