@@ -11,7 +11,8 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   // moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   moduleNameMapper: {
-    components: '<rootDir>/components'
+    components: '<rootDir>/components',
+    testProps: '<rootDir>/testProps.ts'
   }
   // axios: 'axios/dist/node/axios.cjs',
   // hooks: 'hooks/index.ts',
