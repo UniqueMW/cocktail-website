@@ -12,11 +12,13 @@ const dmSans = DM_Sans({
 })
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
+  // opens and closes menu
+  const [openMenu, setOpenMenu] = React.useState(false)
   return (
     <main className={`${fraunces.variable} ${dmSans.variable} bg-background`}>
       <Nav />
-      <MobileNav />
-      <SideMenu />
+      <MobileNav setOpenMenu={setOpenMenu} />
+      <SideMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <Component {...pageProps} />
     </main>
   )
