@@ -3,7 +3,7 @@ import { screen, render } from '@testing-library/react'
 import NavLink from './NavLink'
 
 test('Should render NavLink.', () => {
-  render(<NavLink text="test" href="test" />)
+  render(<NavLink href="test">test</NavLink>)
 
   const link = screen.getByRole('link')
   const getLinkByText = screen.getByText('test')
@@ -14,7 +14,7 @@ test('Should render NavLink.', () => {
 
 test('Should render an icon if provided as a child.', () => {
   render(
-    <NavLink text="test" href="test" icon>
+    <NavLink href="test" icon>
       <h1>child</h1>
     </NavLink>
   )
