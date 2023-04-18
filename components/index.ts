@@ -6,5 +6,20 @@ import SideMenu from './SideMenu/SideMenu'
 import Logo from './Logo/Logo'
 import Hero from './Hero/Hero'
 import Button from './Button/Button'
+import Card from './Card/Card'
+import Grid from './Grid/Grid'
+import GridTitle from './GridTitle/GridTitle'
 
-export { Nav, NavLink, SearchBar, MobileNav, SideMenu, Logo, Hero, Button }
+export {
+  Nav,
+  NavLink,
+  SearchBar,
+  MobileNav,
+  SideMenu,
+  Logo,
+  Hero,
+  Button,
+  Grid,
+  Card,
+  GridTitle
+}
