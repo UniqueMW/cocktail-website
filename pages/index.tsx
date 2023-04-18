@@ -23,6 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
     'https://www.thecocktaildb.com/api/json/v1/1/random.php'
   )
 
+  // TODO add revalidate
   return {
     props: { randomDrink: randomDrinkRes.data.drinks[0] }
   }
