@@ -51,3 +51,21 @@ export interface IRandomDrink {
   strCreativeCommonsConfirmed: string
   dateModified: string
 }
+
+export interface ICategoryListObj {
+  strCategory: string
+}
+
+export interface IIngredientListObj {
+  strIngredient1: string
+}
+
+export interface IGlassListObj {
+  strGlass: string
+}
+
+export interface ICardDrink {
+  strDrink: string
+  strDrinkThumb: string
+  idDrink: string
+}
