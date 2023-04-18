@@ -1,3 +1,6 @@
+/**
+ * NOTE: This file should only be used for test purposes.
+ */
 export const randomDrink = {
   idDrink: '15092',
   strDrink: 'Pysch Vitamin Light',
@@ -51,4 +54,32 @@ export const randomDrink = {
   strImageAttribution: null,
   strCreativeCommonsConfirmed: 'No',
   dateModified: '2015-09-06 16:33:00'
+}
+
+export const drinksList = [
+  {
+    strDrink: '9 1/2 Weeks',
+    strDrinkThumb:
+      'https://www.thecocktaildb.com/images/media/drink/xvwusr1472669302.jpg',
+    idDrink: '16108'
+  },
+  {
+    strDrink: 'A. J.',
+    strDrinkThumb:
+      'https://www.thecocktaildb.com/images/media/drink/l74qo91582480316.jpg',
+    idDrink: '17833'
+  },
+  {
+    strDrink: 'A1',
+    strDrinkThumb:
+      'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg',
+    idDrink: '17222'
+  }
+]
+
+export const cardDrink = {
+  strDrink: 'A1',
+  strDrinkThumb:
+    'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg',
+  idDrink: '17222'
 }
