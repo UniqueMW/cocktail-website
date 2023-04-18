@@ -23,13 +23,13 @@ export default function Home(props: IHomeProps): JSX.Element {
     <>
       <div className=" lg:space-y-16 space-y-12 lg:px-20 px-2 pb-6">
         <Hero randomDrink={props.randomDrink} />
-        <Grid drinks={props.category.drinks} amount={8}>
+        <Grid drinks={props.category.drinks} amount={10}>
           <GridTitle>{props.category.title}</GridTitle>
         </Grid>
-        <Grid drinks={props.ingredient.drinks} amount={8}>
+        <Grid drinks={props.ingredient.drinks} amount={10}>
           <GridTitle>{`Made with ${props.ingredient.title}`}</GridTitle>
         </Grid>
-        <Grid drinks={props.glass.drinks} amount={8}>
+        <Grid drinks={props.glass.drinks} amount={10}>
           <GridTitle>{`served on ${props.glass.title}`}</GridTitle>
         </Grid>
       </div>

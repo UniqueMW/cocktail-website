@@ -31,7 +31,7 @@ function Grid(props: IGridProps): JSX.Element {
   return (
     <section className="flex flex-col items-center space-y-8">
       {props.children}
-      <section className="grid lg:grid-cols-4 grid-cols-2 gap-x-6 gap-y-8">
+      <section className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 md:gap-x-6 md:gap-y-8 gap-x-3 gap-y-4">
         {cardArr}
       </section>
     </section>
