@@ -10,7 +10,7 @@ interface IHeroProps {
 }
 function Hero({ randomDrink }: IHeroProps): JSX.Element {
   return (
-    <section className="grid lg:grid-cols-2 grid-rows-2 sm:gap-2 gap-1 lg:gap-0  lg:justify-center lg:items-center w-full">
+    <section className="grid lg:grid-cols-2 grid-rows-1 sm:gap-2 gap-1 lg:gap-0  lg:justify-center lg:items-center py-4">
       <Image
         src={randomDrink.strDrinkThumb}
         alt={randomDrink.strDrink}
