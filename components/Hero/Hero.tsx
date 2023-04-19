@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import * as _ from 'lodash'
-import { BiBookmarks } from 'react-icons/bi'
+import { BiBookmarks, BiDetail } from 'react-icons/bi'
 import { Button } from 'components'
 
 import type { IRandomDrink } from 'types'
@@ -37,9 +37,16 @@ function Hero({ randomDrink }: IHeroProps): JSX.Element {
             omission: '...'
           })}
         </p>
-        <Button>
-          <BiBookmarks /> Bookmark
-        </Button>
+        <section className=" flex xs:flex-row flex-col justify-between items-center xs:space-y-0 space-y-2 xs:space-x-6">
+          <Button>
+            <BiBookmarks />
+            <h1>Bookmark</h1>
+          </Button>
+          <Button>
+            <BiDetail />
+            <h1>Details</h1>
+          </Button>
+        </section>
       </section>
     </section>
   )
