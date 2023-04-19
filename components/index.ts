@@ -9,6 +9,8 @@ import Button from './Button/Button'
 import Card from './Card/Card'
 import Grid from './Grid/Grid'
 import GridTitle from './GridTitle/GridTitle'
+import FilterCard from './FilterCard/FilterCard'
+import FilterCardList from './FilterCardList/FilterCardList'
 
 export {
   Nav,
@@ -21,5 +23,7 @@ export {
   Button,
   Grid,
   Card,
-  GridTitle
+  GridTitle,
+  FilterCard,
+  FilterCardList
 }
