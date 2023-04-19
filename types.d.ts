@@ -69,3 +69,7 @@ export interface ICardDrink {
   strDrinkThumb: string
   idDrink: string
 }
+
+export interface IDrinks {
+  drinks: ICardDrink[]
+}

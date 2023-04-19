@@ -30,7 +30,7 @@ export default function Home(props: IHomeProps): JSX.Element {
           <GridTitle>{`Made with ${props.ingredient.title}`}</GridTitle>
         </Grid>
         <Grid drinks={props.glass.drinks} amount={10}>
-          <GridTitle>{`served on ${props.glass.title}`}</GridTitle>
+          <GridTitle>{`served on a ${props.glass.title}`}</GridTitle>
         </Grid>
       </div>
     </>
