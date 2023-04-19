@@ -9,8 +9,8 @@ function Nav(): JSX.Element {
       <div className="flex flex-row justify-evenly items-center space-x-4">
         <NavLink href="/">home</NavLink>
         <NavLink href="/category">Category</NavLink>
-        <NavLink href="/category">Ingredients</NavLink>
-        <NavLink href="/category">Glasses</NavLink>
+        <NavLink href="/ingredients">Ingredients</NavLink>
+        <NavLink href="/glasses">Glasses</NavLink>
 
         <SearchBar />
         <NavLink href="/category" icon>

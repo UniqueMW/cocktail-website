@@ -28,9 +28,9 @@ function SideMenu(props: ISideMenuProps): JSX.Element {
         <SearchBar />
         <div className="flex flex-col items-center space-y-6">
           <NavLink href="/">Home</NavLink>
-          <NavLink href="/">Category</NavLink>
-          <NavLink href="/">Ingredients</NavLink>
-          <NavLink href="/">Glasses</NavLink>
+          <NavLink href="/category">Category</NavLink>
+          <NavLink href="/ingredients">Ingredients</NavLink>
+          <NavLink href="/glasses">Glasses</NavLink>
         </div>
         <Logo />
       </section>
