@@ -25,7 +25,11 @@ function IngredientsPage(props: IIngredientsPageProps): JSX.Element {
         filterList={props.filterList}
         defaultCard={props.defaultIngredient}
         url={url}
-      />
+      >
+        <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
+          By Ingredients:
+        </h1>
+      </PageFilterGrid>
     </section>
   )
 }

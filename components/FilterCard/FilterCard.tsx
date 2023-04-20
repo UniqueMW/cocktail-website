@@ -16,7 +16,7 @@ function FilterCard(props: IFilterCardProps): JSX.Element {
   }
   return (
     <button
-      className={`text-lg  font-paragraph border ${
+      className={`text-lg  font-paragraph border h-12 ${
         props.children === props.activeCard
           ? 'border-action text-action'
           : 'border-paragraph text-paragraph'

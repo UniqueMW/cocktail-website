@@ -15,6 +15,7 @@ interface IPageFilterGridProps {
   filterList: Array<IIngredientListObj & ICategoryListObj & IGlassListObj>
   defaultCard: string
   url: string
+  children: React.ReactNode
 }
 
 function PageFilterGrid(props: IPageFilterGridProps): JSX.Element {
@@ -39,9 +40,7 @@ function PageFilterGrid(props: IPageFilterGridProps): JSX.Element {
         setActiveCard={setActiveCard}
         activeCard={activeCard}
       >
-        <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
-          By Category:
-        </h1>
+        {props.children}
       </FilterCardList>
       <Grid drinks={drinks} />
     </section>

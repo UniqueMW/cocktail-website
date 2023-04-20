@@ -24,7 +24,11 @@ function CategoryPage(props: ICategoryPageProps): JSX.Element {
         filterList={props.filterList}
         defaultCard={props.defaultCategory}
         url={url}
-      />
+      >
+        <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
+          By Category:
+        </h1>
+      </PageFilterGrid>
     </section>
   )
 }
