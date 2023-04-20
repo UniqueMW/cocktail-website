@@ -9,13 +9,7 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
-  // moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
-  moduleNameMapper: {
-    components: '<rootDir>/components',
-    testProps: '<rootDir>/testProps.ts'
-  }
-  // axios: 'axios/dist/node/axios.cjs',
-  // hooks: 'hooks/index.ts',
+  moduleDirectories: ['node_modules', '<rootDir>']
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

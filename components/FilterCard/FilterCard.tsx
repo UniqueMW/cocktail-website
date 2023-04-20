@@ -10,7 +10,6 @@ function FilterCard(props: IFilterCardProps): JSX.Element {
   const handleActive = (event: React.MouseEvent<HTMLButtonElement>): void => {
     const textContent = event.currentTarget.textContent
     if (typeof textContent === 'string') {
-      console.log('setting')
       props.setActiveCard(textContent)
     }
   }

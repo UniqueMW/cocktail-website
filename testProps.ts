@@ -83,3 +83,39 @@ export const cardDrink = {
     'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg',
   idDrink: '17222'
 }
+
+export const filterListTest = [
+  {
+    strCategory: 'Ordinary Drink'
+  },
+  {
+    strCategory: 'Cocktail'
+  },
+  {
+    strCategory: 'Shake'
+  },
+  {
+    strCategory: 'Other / Unknown'
+  },
+  {
+    strCategory: 'Cocoa'
+  },
+  {
+    strCategory: 'Shot'
+  },
+  {
+    strCategory: 'Coffee / Tea'
+  },
+  {
+    strCategory: 'Homemade Liqueur'
+  },
+  {
+    strCategory: 'Punch / Party Drink'
+  },
+  {
+    strCategory: 'Beer'
+  },
+  {
+    strCategory: 'Soft Drink'
+  }
+]
