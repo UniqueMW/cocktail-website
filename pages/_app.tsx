@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import { Fraunces, DM_Sans } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import { Nav, MobileNav, SideMenu } from 'components'
+import '@/global.css'
 
 const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces' })
 const dmSans = DM_Sans({

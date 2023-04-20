@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Main styles */
+.logo {
+  fill: none;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-dasharray: 70 330;
+  stroke-dashoffset: 0;
+  -webkit-animation: stroke 6s infinite linear;
+  animation: stroke 6s infinite linear;
+}
+.logo:nth-child(5n + 1) {
+  stroke: #f63959;
+  -webkit-animation-delay: -1.2s;
+  animation-delay: -1.2s;
+}
+.logo:nth-child(5n + 2) {
+  stroke: #f5a503;
+  -webkit-animation-delay: -2.4s;
+  animation-delay: -2.4s;
+}
+.logo:nth-child(5n + 3) {
+  stroke: #3d3335;
+  -webkit-animation-delay: -3.6s;
+  animation-delay: -3.6s;
+}
+.logo:nth-child(5n + 4) {
+  stroke: #89797a;
+  -webkit-animation-delay: -4.8s;
+  animation-delay: -4.8s;
+}
+.logo:nth-child(5n + 5) {
+  stroke: #b75c6d;
+  -webkit-animation-delay: -6s;
+  animation-delay: -6s;
+}
+
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}

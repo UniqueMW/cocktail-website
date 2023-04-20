@@ -18,6 +18,7 @@ interface IGlassesPageProps {
   defaultGlass: string
 }
 
+// TODO don't repeat pages implementation
 function GlassesPage(props: IGlassesPageProps): JSX.Element {
   /**
    * fetch new drinks on the client side based on selected filter.
