@@ -73,3 +73,8 @@ export interface ICardDrink {
 export interface IDrinks {
   drinks: ICardDrink[]
 }
+
+export interface IFilterCardContext {
+  activeCard: string
+  setActiveCard: (args: string) => void
+}

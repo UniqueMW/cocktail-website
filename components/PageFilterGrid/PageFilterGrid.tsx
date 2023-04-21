@@ -7,7 +7,8 @@ import type {
   IIngredientListObj,
   ICategoryListObj,
   IGlassListObj,
-  IDrinks
+  IDrinks,
+  IFilterCardContext
 } from 'types'
 
 interface IPageFilterGridProps {
@@ -18,11 +19,13 @@ interface IPageFilterGridProps {
   children: React.ReactNode
 }
 
+export const FilterCardContext = React.createContext<
+  IFilterCardContext | undefined
+>(undefined)
+
 function PageFilterGrid(props: IPageFilterGridProps): JSX.Element {
   const [drinks, setDrinks] = React.useState(props.drinks)
-  // change defaultCard to just default
   const [activeCard, setActiveCard] = React.useState(props.defaultCard)
-  // require a url,default,filterList and drinks to fetch from the props
   const { data }: { data: IDrinks } = useSWR(
     `${props.url}${activeCard}`,
     fetcher
@@ -34,16 +37,14 @@ function PageFilterGrid(props: IPageFilterGridProps): JSX.Element {
     }
   }, [activeCard, data])
   return (
-    <section className="space-y-10">
-      <FilterCardList
-        filterList={props.filterList}
-        setActiveCard={setActiveCard}
-        activeCard={activeCard}
-      >
-        {props.children}
-      </FilterCardList>
-      <Grid drinks={drinks} />
-    </section>
+    <FilterCardContext.Provider value={{ activeCard, setActiveCard }}>
+      <section className="space-y-10">
+        <FilterCardList filterList={props.filterList}>
+          {props.children}
+        </FilterCardList>
+        <Grid drinks={drinks} />
+      </section>
+    </FilterCardContext.Provider>
   )
 }
 

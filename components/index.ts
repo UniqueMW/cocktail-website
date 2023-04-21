@@ -11,7 +11,10 @@ import Grid from './Grid/Grid'
 import GridTitle from './GridTitle/GridTitle'
 import FilterCard from './FilterCard/FilterCard'
 import FilterCardList from './FilterCardList/FilterCardList'
-import PageFilterGrid from './PageFilterGrid/PageFilterGrid'
+import PageFilterGrid, {
+  FilterCardContext
+} from './PageFilterGrid/PageFilterGrid'
+
 export {
   Nav,
   NavLink,
@@ -26,5 +29,6 @@ export {
   GridTitle,
   FilterCard,
   FilterCardList,
-  PageFilterGrid
+  PageFilterGrid,
+  FilterCardContext
 }

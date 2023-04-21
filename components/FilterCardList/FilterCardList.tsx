@@ -5,11 +5,9 @@ import type { ICategoryListObj, IGlassListObj, IIngredientListObj } from 'types'
 
 interface IFilterCardListProps {
   filterList: Array<ICategoryListObj & IIngredientListObj & IGlassListObj>
-  setActiveCard: (args: string) => void
-  activeCard: string
   children: React.ReactNode
 }
-// TODO resolve prop drilling
+
 function FilterCardList(props: IFilterCardListProps): JSX.Element {
   const [expand, setExpand] = React.useState(false)
 
@@ -18,11 +16,7 @@ function FilterCardList(props: IFilterCardListProps): JSX.Element {
   }
   const filterCardArr = React.useMemo(() => {
     return props.filterList.map((filter) => (
-      <FilterCard
-        key={filter.strCategory}
-        setActiveCard={props.setActiveCard}
-        activeCard={props.activeCard}
-      >
+      <FilterCard key={filter.strCategory}>
         {typeof filter.strCategory === 'string'
           ? filter.strCategory
           : typeof filter.strIngredient1 === 'string'
@@ -30,7 +24,7 @@ function FilterCardList(props: IFilterCardListProps): JSX.Element {
           : filter.strGlass}
       </FilterCard>
     ))
-  }, [props.activeCard])
+  }, [])
   return (
     <section className="space-y-4">
       {props.children}

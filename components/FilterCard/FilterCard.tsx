@@ -1,22 +1,26 @@
 import React from 'react'
+import { FilterCardContext } from 'components'
+import type { IFilterCardContext } from 'types'
 
 interface IFilterCardProps {
   children: React.ReactNode
-  setActiveCard: (args: string) => void
-  activeCard: string
 }
 
 function FilterCard(props: IFilterCardProps): JSX.Element {
+  const { activeCard, setActiveCard } = React.useContext<
+    IFilterCardContext | undefined
+  >(FilterCardContext) as IFilterCardContext
+
   const handleActive = (event: React.MouseEvent<HTMLButtonElement>): void => {
     const textContent = event.currentTarget.textContent
     if (typeof textContent === 'string') {
-      props.setActiveCard(textContent)
+      setActiveCard(textContent)
     }
   }
   return (
     <button
       className={`text-lg  font-paragraph border h-12 ${
-        props.children === props.activeCard
+        props.children === activeCard
           ? 'border-action text-action'
           : 'border-paragraph text-paragraph'
       } rounded-3xl p-2`}
