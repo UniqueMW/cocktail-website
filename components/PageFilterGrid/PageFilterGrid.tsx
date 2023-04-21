@@ -36,6 +36,7 @@ function PageFilterGrid(props: IPageFilterGridProps): JSX.Element {
       setDrinks(data.drinks)
     }
   }, [activeCard, data])
+
   return (
     <FilterCardContext.Provider value={{ activeCard, setActiveCard }}>
       <section className="space-y-10">

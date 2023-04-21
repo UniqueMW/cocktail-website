@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import * as _ from 'lodash'
+import Link from 'next/link'
 import type { ICardDrink } from 'types'
 interface ICardProps {
   drink: ICardDrink
@@ -10,7 +11,7 @@ interface ICardProps {
 
 function Card(props: ICardProps): JSX.Element {
   return (
-    <section>
+    <Link href={`/${props.drink.idDrink}`}>
       <Image
         src={props.drink.strDrinkThumb}
         alt={props.drink.strDrink}
@@ -23,7 +24,7 @@ function Card(props: ICardProps): JSX.Element {
       <h1 className="text-heading text-center font-heading text-lg tracking-wide">
         {_.truncate(props.drink.strDrink, { length: 20, omission: '...' })}
       </h1>
-    </section>
+    </Link>
   )
 }
 
