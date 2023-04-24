@@ -5,10 +5,16 @@ import { BiBookmarks, BiDetail } from 'react-icons/bi'
 import { Button } from 'components'
 
 import type { IRandomDrink } from 'types'
+import { useRouter } from 'next/router'
 interface IHeroProps {
   randomDrink: IRandomDrink
 }
 function Hero({ randomDrink }: IHeroProps): JSX.Element {
+  const router = useRouter()
+  const handleDetails = () => {
+    // eslint-disable-next-line
+    router.push(`/${randomDrink.idDrink}`)
+  }
   return (
     <section className="grid lg:grid-cols-2 grid-rows-1 sm:gap-2 gap-1 lg:gap-0  lg:justify-center lg:items-center py-4">
       <Image
@@ -42,7 +48,7 @@ function Hero({ randomDrink }: IHeroProps): JSX.Element {
             <BiBookmarks />
             <h1>Bookmark</h1>
           </Button>
-          <Button>
+          <Button clickEvent={handleDetails}>
             <BiDetail />
             <h1>Details</h1>
           </Button>

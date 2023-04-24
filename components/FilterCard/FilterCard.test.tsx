@@ -1,15 +1,18 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { FilterCardContext } from '../PageFilterGrid/PageFilterGrid'
 import FilterCard from './FilterCard'
 
 const setActiveSpyFn = jest.fn()
 
 test('Should render FilterCard component.', () => {
   render(
-    <FilterCard activeCard="test" setActiveCard={setActiveSpyFn}>
-      test
-    </FilterCard>
+    <FilterCardContext.Provider
+      value={{ setActiveCard: setActiveSpyFn, activeCard: 'test' }}
+    >
+      <FilterCard>test</FilterCard>
+    </FilterCardContext.Provider>
   )
 
   const filterCardButton = screen.getByRole('button', { name: /test/i })
@@ -18,9 +21,11 @@ test('Should render FilterCard component.', () => {
 
 test('Should call setActiveCard on click.', async () => {
   render(
-    <FilterCard activeCard="test" setActiveCard={setActiveSpyFn}>
-      test
-    </FilterCard>
+    <FilterCardContext.Provider
+      value={{ setActiveCard: setActiveSpyFn, activeCard: 'test' }}
+    >
+      <FilterCard>test</FilterCard>
+    </FilterCardContext.Provider>
   )
 
   const filterCardButton = screen.getByRole('button', { name: /test/i })

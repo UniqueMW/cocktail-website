@@ -12,6 +12,8 @@ import GridTitle from './GridTitle/GridTitle'
 import FilterCard from './FilterCard/FilterCard'
 import FilterCardList from './FilterCardList/FilterCardList'
 import IngredientsSection from './IngredientsSection/IngredientsSection'
+import InstructionSection from './InstructionSection/InstructionSection'
+import DrinkDetailSection from './DrinkDetailSection/DrinkDetailSection'
 import PageFilterGrid, {
   FilterCardContext
 } from './PageFilterGrid/PageFilterGrid'
@@ -32,5 +34,7 @@ export {
   FilterCardList,
   PageFilterGrid,
   FilterCardContext,
-  IngredientsSection
+  IngredientsSection,
+  InstructionSection,
+  DrinkDetailSection
 }
