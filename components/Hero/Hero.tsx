@@ -11,7 +11,7 @@ interface IHeroProps {
 }
 function Hero({ randomDrink }: IHeroProps): JSX.Element {
   const router = useRouter()
-  const handleDetails = () => {
+  const handleDetails = (): void => {
     // eslint-disable-next-line
     router.push(`/${randomDrink.idDrink}`)
   }
