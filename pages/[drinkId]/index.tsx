@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { Button } from 'components'
-import { BiBookmarks } from 'react-icons/bi'
+import { Button, IngredientsSection } from 'components'
+import { BiBookmarks, BiTime } from 'react-icons/bi'
+import { GiWineGlass } from 'react-icons/gi'
 import type { IRandomDrink } from 'types'
 import type { GetServerSideProps } from 'next'
 import React from 'react'
@@ -39,16 +40,24 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
             {drink.strDrink}
           </h1>
           <h3 className="text-action text-lg italic">{drink.strAlcoholic}</h3>
+          {/* TODO:make Heading detail component */}
           <section className="flex flex-row flex-wrap text-paragraph font-paragraph">
-            <h2 className="mr-4">Modified on: {drink.dateModified}</h2>
+            {/* TODO: make tag component */}
+            <h2 className="flex flex-row items-center mr-4">
+              <BiTime /> {drink.dateModified}
+            </h2>
             <h2 className="mr-4">
               {typeof drink.strTags === 'string'
                 ? drink.strTags
                 : drink.strCategory}
             </h2>
-            <h2>{drink.strGlass}</h2>
+            <h2 className="flex flex-row items-center">
+              <GiWineGlass />
+              {drink.strGlass}
+            </h2>
           </section>
         </div>
+        {/* TODO:make instruction component */}
         <section className="space-y-3">
           <h3 className="text-heading text-2xl tracking-wider font-heading border-b-2 border-action">
             Instructions
@@ -57,14 +66,8 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
             {drink.strInstructions}
           </p>
         </section>
-        <section>
-          <h3 className="text-heading text-2xl tracking-wider font-heading border-b-2 border-action">
-            Ingredients
-          </h3>
-          <ol className="grid md:grid-cols-2 grid-cols-1 text-heading space-y-1">
-            {ingredientList}
-          </ol>
-        </section>
+        {/* TODO: Make ingredient components */}
+        <IngredientsSection>{ingredientList}</IngredientsSection>
         <Button>
           <BiBookmarks />
           <h1>Bookmark</h1>
