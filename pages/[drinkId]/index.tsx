@@ -20,6 +20,7 @@ interface IDrinkDetailPageProps {
 
 function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
   const [isBookmarked, setIsBookmarked] = React.useState<boolean>()
+
   const ingredientList = React.useMemo(() => {
     const groupArray = groupValues(drink, 'strIngredient')
     const measurements = groupValues(drink, 'strMeasure')

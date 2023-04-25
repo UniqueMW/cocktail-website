@@ -17,7 +17,7 @@ function MobileNav(props: IMobileNavProps): JSX.Element {
         <TfiMenu />
       </button>
       <Logo />
-      <NavLink href="/category" icon>
+      <NavLink href="/bookmark" icon>
         <BiBookmarks />
       </NavLink>
     </nav>

@@ -1,18 +1,14 @@
 import React from 'react'
 import { Card } from 'components'
-import type { ICardDrink } from 'types'
+import type { ICardDrink, IRandomDrink } from 'types'
 
 interface IGridProps {
-  drinks: ICardDrink[]
+  drinks: Array<ICardDrink | IRandomDrink>
   children?: React.ReactNode
   amount?: number
 }
-/**
- * receive a list of drinks
- * render a list of card and the drink title
- */
 
-// TODO handle empty drinks list
+// TODO handle empty drinks list eg empty bookmark
 function Grid(props: IGridProps): JSX.Element {
   const cardArr = React.useMemo(() => {
     let controlledDrinkAmount = props.drinks

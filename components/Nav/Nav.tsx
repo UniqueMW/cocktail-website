@@ -13,7 +13,7 @@ function Nav(): JSX.Element {
         <NavLink href="/glasses">Glasses</NavLink>
 
         <SearchBar />
-        <NavLink href="/category" icon>
+        <NavLink href="/bookmark" icon>
           <BiBookmarks />
         </NavLink>
       </div>

@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 import * as _ from 'lodash'
-import { BiBookmarks, BiDetail } from 'react-icons/bi'
+import { BiDetail } from 'react-icons/bi'
+import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs'
+import { addAndRemove, checkDrinkInBookmark } from 'utils'
 import { Button } from 'components'
 
 import type { IRandomDrink } from 'types'
@@ -10,11 +12,23 @@ interface IHeroProps {
   randomDrink: IRandomDrink
 }
 function Hero({ randomDrink }: IHeroProps): JSX.Element {
+  const [isBookmarked, setIsBookmarked] = React.useState<boolean>()
+
   const router = useRouter()
   const handleDetails = (): void => {
     // eslint-disable-next-line
     router.push(`/${randomDrink.idDrink}`)
   }
+
+  React.useEffect(() => {
+    setIsBookmarked(checkDrinkInBookmark(randomDrink))
+  }, [])
+
+  const handleLocalStorage = (): void => {
+    addAndRemove(randomDrink)
+    setIsBookmarked(checkDrinkInBookmark(randomDrink))
+  }
+
   return (
     <section className="grid lg:grid-cols-2 grid-rows-1 sm:gap-2 gap-1 lg:gap-0  lg:justify-center lg:items-center py-4">
       <Image
@@ -44,8 +58,13 @@ function Hero({ randomDrink }: IHeroProps): JSX.Element {
           })}
         </p>
         <section className=" flex xs:flex-row flex-col justify-between items-center xs:space-y-0 space-y-2 xs:space-x-6">
-          <Button>
-            <BiBookmarks />
+          <Button clickEvent={handleLocalStorage}>
+            {/* eslint-disable-next-line */}
+            {isBookmarked ? (
+              <BsBookmarksFill className="text-heading" />
+            ) : (
+              <BsBookmarks />
+            )}
             <h1>Bookmark</h1>
           </Button>
           <Button clickEvent={handleDetails}>
