@@ -19,9 +19,7 @@ interface IDrinkDetailPageProps {
 // TODO break this page to components
 
 function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
-  const [isBookmarked, setIsBookmarked] = React.useState(
-    checkDrinkInBookmark(drink)
-  )
+  const [isBookmarked, setIsBookmarked] = React.useState<boolean>()
   const ingredientList = React.useMemo(() => {
     const groupArray = groupValues(drink, 'strIngredient')
     const measurements = groupValues(drink, 'strMeasure')
@@ -39,7 +37,11 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
     })
   }, [])
 
-  const handlerLocalStorage = (): void => {
+  React.useEffect(() => {
+    setIsBookmarked(checkDrinkInBookmark(drink))
+  }, [])
+
+  const handleLocalStorage = (): void => {
     addAndRemove(drink)
     setIsBookmarked(checkDrinkInBookmark(drink))
   }
@@ -64,7 +66,8 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
         <InstructionSection instruction={drink.strInstructions} />
         <IngredientsSection>{ingredientList}</IngredientsSection>
         <div className="flex flex-row justify-center">
-          <Button clickEvent={handlerLocalStorage}>
+          <Button clickEvent={handleLocalStorage}>
+            {/* eslint-disable-next-line */}
             {isBookmarked ? (
               <BsBookmarksFill className="text-heading" />
             ) : (

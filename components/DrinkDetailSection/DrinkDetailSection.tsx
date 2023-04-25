@@ -1,5 +1,5 @@
 import React from 'react'
-import { BiTime } from 'react-icons/bi'
+import { AiOutlineCalendar } from 'react-icons/ai'
 import { GiWineGlass } from 'react-icons/gi'
 
 interface IDrinkDetailSection {
@@ -13,7 +13,7 @@ function DrinkDetailSection(props: IDrinkDetailSection): JSX.Element {
   return (
     <section className="flex flex-row justify-center lg:justify-start flex-wrap text-paragraph font-paragraph">
       <h2 className="flex flex-row items-center mr-4">
-        <BiTime /> {props.date}
+        <AiOutlineCalendar /> {props.date}
       </h2>
       <h2 className="mr-4">
         {typeof props.tag === 'string' ? props.tag : props.category}

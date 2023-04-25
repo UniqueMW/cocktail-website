@@ -34,9 +34,8 @@ export function checkDrinkInBookmark(
       (drinkItem) => drinkItem.idDrink === drink.idDrink
     )
     return filterBookmarkList.length > 0
-  } else {
-    throw new Error(`Could not find localStorage item with key ${key}.`)
   }
+  return false
 }
 
 export default addAndRemove
