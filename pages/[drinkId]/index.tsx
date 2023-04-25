@@ -5,12 +5,12 @@ import {
   InstructionSection,
   DrinkDetailSection
 } from 'components'
-import { BiBookmarks } from 'react-icons/bi'
+import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs'
 import type { IRandomDrink } from 'types'
 import type { GetServerSideProps } from 'next'
 import React from 'react'
 import Image from 'next/image'
-import { groupValues } from 'utils'
+import { addAndRemove, checkDrinkInBookmark, groupValues } from 'utils'
 
 interface IDrinkDetailPageProps {
   drink: IRandomDrink
@@ -19,6 +19,9 @@ interface IDrinkDetailPageProps {
 // TODO break this page to components
 
 function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
+  const [isBookmarked, setIsBookmarked] = React.useState(
+    checkDrinkInBookmark(drink)
+  )
   const ingredientList = React.useMemo(() => {
     const groupArray = groupValues(drink, 'strIngredient')
     const measurements = groupValues(drink, 'strMeasure')
@@ -35,6 +38,11 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
       )
     })
   }, [])
+
+  const handlerLocalStorage = (): void => {
+    addAndRemove(drink)
+    setIsBookmarked(checkDrinkInBookmark(drink))
+  }
 
   return (
     <section className="grid lg:grid-cols-2 grid-cols-1 items-center justify-between lg:gap-6 lg:px-10 px-2 ">
@@ -56,8 +64,12 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
         <InstructionSection instruction={drink.strInstructions} />
         <IngredientsSection>{ingredientList}</IngredientsSection>
         <div className="flex flex-row justify-center">
-          <Button>
-            <BiBookmarks />
+          <Button clickEvent={handlerLocalStorage}>
+            {isBookmarked ? (
+              <BsBookmarksFill className="text-heading" />
+            ) : (
+              <BsBookmarks />
+            )}
             <h1>Bookmark</h1>
           </Button>
         </div>
