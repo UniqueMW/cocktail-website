@@ -1,14 +1,15 @@
-import type { IRandomDrink } from 'types'
+import type { ICardDrink, IRandomDrink } from 'types'
 
 // TODO: Create a github gist for this script.
 function addAndRemove(
-  drink: IRandomDrink,
+  drink: IRandomDrink | ICardDrink,
   key: string = 'uniqueMWDrinks'
 ): void {
   const stringifiedBookmarks = localStorage.getItem(key)
 
   if (typeof stringifiedBookmarks === 'string') {
-    const bookmarkList: IRandomDrink[] = JSON.parse(stringifiedBookmarks)
+    const bookmarkList: Array<IRandomDrink | ICardDrink> =
+      JSON.parse(stringifiedBookmarks)
     if (checkDrinkInBookmark(drink, key)) {
       const filteredBookmarks = bookmarkList.filter(
         (drinkItem) => drinkItem.idDrink !== drink.idDrink
@@ -24,12 +25,13 @@ function addAndRemove(
 }
 
 export function checkDrinkInBookmark(
-  drink: IRandomDrink,
+  drink: IRandomDrink | ICardDrink,
   key: string = 'uniqueMWDrinks'
 ): boolean {
   const stringifiedBookmarks = localStorage.getItem(key)
   if (typeof stringifiedBookmarks === 'string') {
-    const getBookmarkList: IRandomDrink[] = JSON.parse(stringifiedBookmarks)
+    const getBookmarkList: Array<IRandomDrink | ICardDrink> =
+      JSON.parse(stringifiedBookmarks)
     const filterBookmarkList = getBookmarkList.filter(
       (drinkItem) => drinkItem.idDrink === drink.idDrink
     )
