@@ -78,3 +78,8 @@ export interface IFilterCardContext {
   activeCard: string
   setActiveCard: (args: string) => void
 }
+
+export interface ISearchBoxContext {
+  openSearchBox: boolean
+  setOpenSearchBox: (args: boolean) => void
+}

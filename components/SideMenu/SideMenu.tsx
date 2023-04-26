@@ -6,17 +6,9 @@ interface ISideMenuProps {
 }
 
 function SideMenu(props: ISideMenuProps): JSX.Element {
-  // Changes body element to overflow hidden if menu is open
-  React.useEffect(() => {
-    if (props.openMenu) {
-      document.body.style.overflow = 'hidden'
-    }
-  }, [props.openMenu])
-
   // Changes back body overflow
   const handleMenu = (): void => {
     props.setOpenMenu(false)
-    document.body.style.overflow = 'auto'
   }
   return (
     <div
