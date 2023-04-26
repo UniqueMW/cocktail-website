@@ -1,18 +1,18 @@
 import React from 'react'
-import { FiSearch } from 'react-icons/fi'
-
+import { RxSlash } from 'react-icons/rx'
+import { RiSearch2Line } from 'react-icons/ri'
 function SearchBar(): JSX.Element {
   return (
-    <form className="flex flex-row justify-center text-heading font-heading text-lg items-center w-full">
-      <input
-        type="text"
-        placeholder="Search"
-        className="bg-transparent border border-paragraph h-10 px-1 w-[70%]"
-      />
-      <button type="submit" className="bg-action h-10 px-2">
-        <FiSearch />
-      </button>
-    </form>
+    <button
+      type="submit"
+      className="flex flex-row items-center justify-between space-x-4 text-lg text-heading font-heading tracking-wider bg-transparent border border-paragraph w-full sm:max-w-[70%] py-2 px-2 "
+    >
+      <RiSearch2Line className="text-xl" />
+      <h3>Try gin...</h3>
+      <div className="border p-1 border-heading">
+        <RxSlash />
+      </div>
+    </button>
   )
 }
 
