@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { searchBoxContext } from 'pages/_app'
 import SideMenu from './SideMenu'
 
 jest.mock('components', () => ({
@@ -10,9 +11,16 @@ jest.mock('components', () => ({
 }))
 
 const handleMenuSpyFn = jest.fn()
+const setOpenSearchBoxSpyFn = jest.fn()
 
 test('Should render SideMenu component.', () => {
-  render(<SideMenu setOpenMenu={handleMenuSpyFn} openMenu />)
+  render(
+    <searchBoxContext.Provider
+      value={{ setOpenSearchBox: setOpenSearchBoxSpyFn, openSearchBox: false }}
+    >
+      <SideMenu setOpenMenu={handleMenuSpyFn} openMenu />
+    </searchBoxContext.Provider>
+  )
 
   const logo = screen.getByRole('heading', { name: /logo/i })
   const navLink = screen.getAllByRole('heading', { name: /navLink/i })

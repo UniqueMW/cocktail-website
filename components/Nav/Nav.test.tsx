@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import { searchBoxContext } from '@/pages/_app'
 import Nav from './Nav'
 
 jest.mock('components', () => ({
@@ -8,8 +9,16 @@ jest.mock('components', () => ({
   Logo: () => <h1>Logo</h1>
 }))
 
+const setOpenSearchBoxSpyFn = jest.fn()
+
 test('Should render nav.', () => {
-  render(<Nav />)
+  render(
+    <searchBoxContext.Provider
+      value={{ setOpenSearchBox: setOpenSearchBoxSpyFn, openSearchBox: false }}
+    >
+      <Nav />
+    </searchBoxContext.Provider>
+  )
 
   const links = screen.getAllByRole('heading', { name: /nav link/i })
   const searchBar = screen.getByRole('heading', { name: /search bar/i })

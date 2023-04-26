@@ -24,7 +24,10 @@ function SearchBox(): JSX.Element {
         }}
       >
         <section className=" p-2 bg-background">
-          <form className="border border-heading flex flex-row items-center p-1">
+          <form
+            className="border border-heading flex flex-row items-center p-1"
+            role="form"
+          >
             <RiSearch2Line className="text-2xl text-heading" />
             <input
               placeholder="Search for a drink"
