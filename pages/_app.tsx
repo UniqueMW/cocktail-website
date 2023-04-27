@@ -4,6 +4,7 @@ import { Fraunces, DM_Sans } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import type { ISearchBoxContext } from 'types'
 import { Nav, MobileNav, SideMenu, SearchBox } from 'components'
+import FocusLock from 'react-focus-lock'
 import '@/global.css'
 
 const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces' })
@@ -35,10 +36,8 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   React.useEffect(() => {
     if (openSearchBox || openMenu) {
       document.body.className = 'overflow-hidden'
-      // document.body.setAttribute('inert', 'true')
     } else {
       document.body.className = 'overflow-auto'
-      // document.body.setAttribute('inert', 'false')
     }
   }, [openSearchBox, openMenu])
 
@@ -48,8 +47,10 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
     >
       <searchBoxContext.Provider value={{ openSearchBox, setOpenSearchBox }}>
         <Nav />
-        <SearchBox />
-        <SideMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
+        <FocusLock>
+          <SearchBox />
+          <SideMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
+        </FocusLock>
       </searchBoxContext.Provider>
       <MobileNav setOpenMenu={setOpenMenu} />
       <Component {...pageProps} />

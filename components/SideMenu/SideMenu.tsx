@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink, SearchBar, Logo } from 'components'
+
 interface ISideMenuProps {
   openMenu: boolean
   setOpenMenu: (args: boolean) => void

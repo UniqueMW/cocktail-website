@@ -6,46 +6,39 @@ import type { ISearchBoxContext } from 'types'
 // TODO Implement modal focus.
 function SearchBox(): JSX.Element {
   const context = React.useContext(searchBoxContext) as ISearchBoxContext
-
   const handleHideSearchBox = (): void => {
     context.setOpenSearchBox(false)
   }
 
   return (
-    <dialog
-      autoFocus
+    <div
       className={`${
         context.openSearchBox ? 'flex' : 'hidden'
-      } flex-col absolute left-0 top-0 z-30 justify-start py-16 items-center w-full  h-[100vh] bg-gray-600/80`}
+      } flex-col fixed left-0 top-0 z-30 justify-start py-16 items-center w-full  h-[100vh] bg-gray-600/80`}
       onClick={handleHideSearchBox}
     >
       <section
         className=" z-40 text-heading bg-background shadow-lg md:w-1/2 w-5/6 p-5"
-        onClick={(e) => {
-          e.stopPropagation()
+        onClick={(event) => {
+          event.stopPropagation()
         }}
       >
-        <section className=" p-2 bg-background">
-          <form
-            className="border border-heading flex flex-row items-center p-1"
-            role="form"
+        <form className=" flex flex-row items-center space-x-2 p-1" role="form">
+          <RiSearch2Line className="text-2xl text-heading h-11" />
+          <input
+            placeholder="Search for a drink"
+            className="bg-background w-full px-1 h-11 text-lg tracking wide text-heading font-heading border border-heading focus:outline"
+          />
+          <button
+            className="p-2 border border-heading text-heading h-11"
+            onClick={handleHideSearchBox}
+            type="button"
           >
-            <RiSearch2Line className="text-2xl text-heading" />
-            <input
-              placeholder="Search for a drink"
-              className="bg-background w-full px-1 text-lg tracking wide text-heading font-heading outline-none"
-            />
-            <button
-              className="p-2 border border-heading text-heading"
-              onClick={handleHideSearchBox}
-              type="button"
-            >
-              ESC
-            </button>
-          </form>
-        </section>
+            ESC
+          </button>
+        </form>
       </section>
-    </dialog>
+    </div>
   )
 }
 

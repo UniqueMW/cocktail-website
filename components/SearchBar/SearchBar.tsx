@@ -13,7 +13,7 @@ function SearchBar(): JSX.Element {
   return (
     <button
       type="submit"
-      className="flex flex-row items-center justify-between space-x-4 text-lg text-heading font-heading tracking-wider bg-transparent border border-paragraph w-full sm:max-w-[70%] py-2 px-2 "
+      className="flex flex-row items-center justify-between space-x-4 text-lg text-heading font-heading tracking-wider bg-transparent border border-paragraph w-full sm:max-w-[70%] py-2 px-2 h-11"
       onClick={handleOpenSearchBox}
     >
       <RiSearch2Line className="text-xl" />
