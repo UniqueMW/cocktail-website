@@ -83,3 +83,9 @@ export interface ISearchBoxContext {
   openSearchBox: boolean
   setOpenSearchBox: (args: boolean) => void
 }
+
+export interface IFetchedDrink {
+  data: {
+    drinks: IRandomDrink[]
+  }
+}
