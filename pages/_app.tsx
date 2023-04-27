@@ -35,8 +35,10 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   React.useEffect(() => {
     if (openSearchBox || openMenu) {
       document.body.className = 'overflow-hidden'
+      // document.body.setAttribute('inert', 'true')
     } else {
       document.body.className = 'overflow-auto'
+      // document.body.setAttribute('inert', 'false')
     }
   }, [openSearchBox, openMenu])
 

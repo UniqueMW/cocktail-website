@@ -3,6 +3,7 @@ import { searchBoxContext } from 'pages/_app'
 import { RiSearch2Line } from 'react-icons/ri'
 import type { ISearchBoxContext } from 'types'
 
+// TODO Implement modal focus.
 function SearchBox(): JSX.Element {
   const context = React.useContext(searchBoxContext) as ISearchBoxContext
 
@@ -11,7 +12,8 @@ function SearchBox(): JSX.Element {
   }
 
   return (
-    <section
+    <dialog
+      autoFocus
       className={`${
         context.openSearchBox ? 'flex' : 'hidden'
       } flex-col absolute left-0 top-0 z-30 justify-start py-16 items-center w-full  h-[100vh] bg-gray-600/80`}
@@ -43,7 +45,7 @@ function SearchBox(): JSX.Element {
           </form>
         </section>
       </section>
-    </section>
+    </dialog>
   )
 }
 

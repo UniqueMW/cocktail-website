@@ -14,7 +14,7 @@ function NavLink(props: INavLinkProps): JSX.Element {
     return (
       <Link
         href={props.href}
-        className="text-xl font-heading tracking-wider capitalize text-paragraph h-10 px-2 border border-action flex items-center"
+        className="text-xl font-heading tracking-wider capitalize text-paragraph h-10 px-2 border border-heading flex items-center"
       >
         {props.children}
       </Link>
