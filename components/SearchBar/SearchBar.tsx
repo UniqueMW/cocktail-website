@@ -24,7 +24,7 @@ function SearchBar(): JSX.Element {
         _.truncate(data.drinks[0].strDrink, { length: 10, omission: '...' })
       )
     }
-  }, [])
+  }, [data])
 
   return (
     <button

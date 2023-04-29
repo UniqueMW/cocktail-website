@@ -22,7 +22,7 @@ function SearchBox(): JSX.Element {
         _.truncate(data.drinks[0].strDrink, { length: 20, omission: '...' })
       )
     }
-  }, [])
+  }, [data])
 
   return (
     <div
