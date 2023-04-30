@@ -1,71 +1,48 @@
 import React from 'react'
 import useSWR from 'swr'
-import * as _ from 'lodash'
-import { fetcher } from 'utils'
+import { fetcher, debounce } from 'utils'
 import { searchBoxContext } from 'pages/_app'
 import { RiSearch2Line } from 'react-icons/ri'
-import type { ISearchBoxContext, IFetchedDrink, IRandomDrink } from 'types'
+import type { ISearchBoxContext, IFetchedDrink } from 'types'
 import SuggestionCard from '../SuggestionCard/SuggestionCard'
+import { useInputSuggestion, useSearchSuggestion } from '@/hooks'
 
-// TODO Implement modal focus.
 // TODO handle mo results.
 function SearchBox(): JSX.Element {
   const context = React.useContext(searchBoxContext) as ISearchBoxContext
-  const [inputSuggestion, setInputSuggestion] = React.useState('Gin')
   const [searchBoxSuggestionsUrl, setSearchBoxSuggestionsUrl] = React.useState(
     'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin'
   )
-
-  const [searchSuggestionsByName, setSearchSuggestionsByName] =
-    React.useState<IRandomDrink[]>()
-
-  let timeOut: string | number | NodeJS.Timeout | undefined
+  const url = 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
 
   const handleHideSearchBox = (): void => {
     context.setOpenSearchBox(false)
   }
+
+  const handleSearchInput = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ): void => {
+    const target = event.target as HTMLInputElement
+    debounce(() => {
+      setSearchBoxSuggestionsUrl(
+        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${target?.value}`
+      )
+    }, 100)()
+  }
+  const randomDrink: IFetchedDrink = useSWR(url, fetcher)
+  const searchSuggestionsByNameRes = useSWR(searchBoxSuggestionsUrl, fetcher)
+
+  const inputSuggestion = useInputSuggestion(randomDrink)
+
+  const searchSuggestionsByName = useSearchSuggestion(
+    searchSuggestionsByNameRes
+  )
 
   const suggestionResults = React.useMemo(() => {
     return searchSuggestionsByName?.map((suggestion) => (
       <SuggestionCard drink={suggestion} key={suggestion.idDrink} />
     ))
   }, [searchSuggestionsByName])
-
-  // TODO: Refactor the debounce logic
-  const handleSearchInput = (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ): void => {
-    clearTimeout(timeOut)
-    timeOut = setTimeout(() => {
-      setSearchBoxSuggestionsUrl(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${
-          event.target?.value as string
-        }`
-      )
-    }, 100)
-  }
-  const url = 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-  const randomDrink: IFetchedDrink = useSWR(url, fetcher)
-  const searchSuggestionsByNameRes = useSWR(searchBoxSuggestionsUrl, fetcher)
-
-  // TODO:Refactor into a hook
-  React.useEffect(() => {
-    if (typeof randomDrink.data !== 'undefined') {
-      setInputSuggestion(
-        _.truncate(randomDrink.data.drinks[0].strDrink, {
-          length: 20,
-          omission: '...'
-        })
-      )
-    }
-  }, [randomDrink.data])
-
-  // TODO: Refactor into a hook
-  React.useEffect(() => {
-    if (typeof searchSuggestionsByNameRes.data !== 'undefined') {
-      setSearchSuggestionsByName(searchSuggestionsByNameRes.data.drinks)
-    }
-  }, [searchSuggestionsByNameRes.data])
 
   return (
     <div
@@ -95,7 +72,7 @@ function SearchBox(): JSX.Element {
             ESC
           </button>
         </form>
-        <div className="px-1 pt-4 space-y-2 h-fit max-h-[60vh] overflow-y-auto">
+        <div className="px-1 pt-4 space-y-2 h-fit max-h-[60vh] overflow-y-auto scrollbar-thumb-action scrollbar-thin">
           {suggestionResults}
         </div>
       </section>
