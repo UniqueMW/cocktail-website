@@ -86,6 +86,6 @@ export interface ISearchBoxContext {
 
 export interface IFetchedDrink {
   data: {
-    drinks: IRandomDrink[]
+    drinks: IRandomDrink[] | ICardDrink[]
   }
 }

@@ -6,14 +6,18 @@ import { RiSearch2Line } from 'react-icons/ri'
 import type { ISearchBoxContext, IFetchedDrink } from 'types'
 import { SuggestionCard, Empty } from 'components'
 import { useInputSuggestion, useSearchSuggestion } from 'hooks'
+import { useRouter } from 'next/router'
 
-// TODO handle mo results.
+// TODO handle no results.
+// TODO show ingredients suggestions
 function SearchBox(): JSX.Element {
   const context = React.useContext(searchBoxContext) as ISearchBoxContext
   const [searchBoxSuggestionsUrl, setSearchBoxSuggestionsUrl] = React.useState(
     'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin'
   )
+  const [searchValue, setSearchValue] = React.useState<string>()
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+  const router = useRouter()
 
   const handleHideSearchBox = (): void => {
     context.setOpenSearchBox(false)
@@ -24,11 +28,19 @@ function SearchBox(): JSX.Element {
   ): void => {
     const target = event.target as HTMLInputElement
     debounce(() => {
+      setSearchValue(target?.value)
       setSearchBoxSuggestionsUrl(
         `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${target?.value}`
       )
     }, 100)()
   }
+
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault()
+    // eslint-disable-next-line
+    router.push(`/search/${searchValue}`)
+  }
+
   const randomDrink: IFetchedDrink = useSWR(url, fetcher)
   const searchSuggestionsByNameRes = useSWR(searchBoxSuggestionsUrl, fetcher)
 
@@ -39,7 +51,6 @@ function SearchBox(): JSX.Element {
   )
 
   const suggestionResults = React.useMemo(() => {
-    console.log(searchSuggestionsByName)
     if (searchSuggestionsByName?.length <= 0) {
       return <Empty text={inputSuggestion} />
     }
@@ -61,8 +72,14 @@ function SearchBox(): JSX.Element {
           event.stopPropagation()
         }}
       >
-        <form className=" flex flex-row items-center space-x-2 p-1" role="form">
-          <RiSearch2Line className="text-2xl text-heading h-11" />
+        <form
+          className=" flex flex-row items-center space-x-2 p-1"
+          role="form"
+          onSubmit={handleSearch}
+        >
+          <button type="submit">
+            <RiSearch2Line className="text-2xl text-heading h-11" />
+          </button>
           <input
             placeholder={`Try ${inputSuggestion}`}
             className="bg-background w-full px-1 h-11 text-lg tracking wide text-heading font-heading border border-heading focus:outline"

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'components'
+import { Card, Empty } from 'components'
 import type { ICardDrink, IRandomDrink } from 'types'
 
 interface IGridProps {
@@ -13,6 +13,10 @@ function Grid(props: IGridProps): JSX.Element {
   const cardArr = React.useMemo(() => {
     let controlledDrinkAmount = props.drinks
     const amount = props.amount
+    if (props.drinks.length <= 0) {
+      return <Empty text="Gin" />
+    }
+
     if (typeof amount === 'number') {
       controlledDrinkAmount = props.drinks.filter((drink, index) => {
         return index < amount
