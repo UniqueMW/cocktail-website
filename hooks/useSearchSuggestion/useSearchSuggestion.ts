@@ -13,7 +13,7 @@ function useSearchSuggestion(res: {
     }
   }, [res.data])
 
-  if (typeof searchSuggestions === 'undefined') {
+  if (typeof searchSuggestions === 'undefined' || searchSuggestions === null) {
     return []
   }
 

@@ -4,8 +4,8 @@ import { fetcher, debounce } from 'utils'
 import { searchBoxContext } from 'pages/_app'
 import { RiSearch2Line } from 'react-icons/ri'
 import type { ISearchBoxContext, IFetchedDrink } from 'types'
-import SuggestionCard from '../SuggestionCard/SuggestionCard'
-import { useInputSuggestion, useSearchSuggestion } from '@/hooks'
+import { SuggestionCard, Empty } from 'components'
+import { useInputSuggestion, useSearchSuggestion } from 'hooks'
 
 // TODO handle mo results.
 function SearchBox(): JSX.Element {
@@ -39,6 +39,10 @@ function SearchBox(): JSX.Element {
   )
 
   const suggestionResults = React.useMemo(() => {
+    console.log(searchSuggestionsByName)
+    if (searchSuggestionsByName?.length <= 0) {
+      return <Empty text={inputSuggestion} />
+    }
     return searchSuggestionsByName?.map((suggestion) => (
       <SuggestionCard drink={suggestion} key={suggestion.idDrink} />
     ))
