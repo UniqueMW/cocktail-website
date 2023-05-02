@@ -13,6 +13,7 @@ interface IHeroProps {
 }
 function Hero({ randomDrink }: IHeroProps): JSX.Element {
   const [isBookmarked, setIsBookmarked] = React.useState<boolean>()
+  const [instructions, setInstructions] = React.useState<string>()
 
   const router = useRouter()
   const handleDetails = (): void => {
@@ -22,6 +23,19 @@ function Hero({ randomDrink }: IHeroProps): JSX.Element {
 
   React.useEffect(() => {
     setIsBookmarked(checkDrinkInBookmark(randomDrink))
+
+    const length = 300
+    const shortInstructions = _.trimEnd(
+      _.truncate(randomDrink.strInstructions, {
+        length
+      })
+    )
+
+    if (shortInstructions.length <= length) {
+      setInstructions(shortInstructions)
+    } else {
+      setInstructions(`${shortInstructions}...`)
+    }
   }, [])
 
   const handleLocalStorage = (): void => {
@@ -52,10 +66,7 @@ function Hero({ randomDrink }: IHeroProps): JSX.Element {
           className="text-paragraph text-xl text-center lg:text-left font-paragraph tracking-wide"
           role="paragraph"
         >
-          {_.truncate(randomDrink.strInstructions, {
-            length: 200,
-            omission: '...'
-          })}
+          {instructions}
         </p>
         <section className=" flex xs:flex-row flex-col justify-between items-center xs:space-y-0 space-y-2 xs:space-x-6">
           <Button clickEvent={handleLocalStorage}>

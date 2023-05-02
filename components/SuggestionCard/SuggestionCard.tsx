@@ -8,16 +8,16 @@ interface ISuggestionCardProps {
 
 function SuggestionCard(props: ISuggestionCardProps): JSX.Element {
   return (
-    <Link href={`/${props.drink.idDrink}`}>
-      <section className="border border-paragraph">
+    <section className="border border-paragraph">
+      <Link href={`/${props.drink.idDrink}`}>
         <h1 className="text-lg text-paragraph font-paragraph tracking-wide">
           {props.drink.strDrink}
         </h1>
         <h3 className="text-base text-action italic font-paragraph tracking-wide">
           {props.drink.strAlcoholic}
         </h3>
-      </section>
-    </Link>
+      </Link>
+    </section>
   )
 }
 

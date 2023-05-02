@@ -10,6 +10,18 @@ interface ICardProps {
 // TODO add bookmark functionality
 
 function Card(props: ICardProps): JSX.Element {
+  const [heading, setHeading] = React.useState<string>()
+
+  React.useEffect(() => {
+    const length = 20
+    const shortHeading = _.trimEnd(_.truncate(props.drink.strDrink, { length }))
+
+    if (shortHeading.length <= length) {
+      setHeading(shortHeading)
+    } else {
+      setHeading(`${shortHeading}...`)
+    }
+  }, [])
   return (
     <Link href={`/${props.drink.idDrink}`}>
       <Image
@@ -22,7 +34,7 @@ function Card(props: ICardProps): JSX.Element {
         className="object-cover"
       />
       <h1 className="text-heading text-center font-heading text-lg tracking-wide">
-        {_.truncate(props.drink.strDrink, { length: 20, omission: '...' })}
+        {heading}
       </h1>
     </Link>
   )
