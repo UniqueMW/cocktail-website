@@ -1,9 +1,6 @@
 import React from 'react'
 import { RxSlash } from 'react-icons/rx'
 import { RiSearch2Line } from 'react-icons/ri'
-import useSWR from 'swr'
-import { fetcher } from 'utils'
-import type { IFetchedDrink } from 'types'
 import { searchBoxContext } from 'pages/_app'
 import { useInputSuggestion } from '@/hooks'
 
@@ -15,9 +12,8 @@ function SearchBar(): JSX.Element {
   }
 
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-  const fetchedDrink: IFetchedDrink = useSWR(url, fetcher)
 
-  const suggestion = useInputSuggestion(fetchedDrink, 10)
+  const suggestion = useInputSuggestion(url, 10)
 
   return (
     <button

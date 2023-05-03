@@ -27,7 +27,7 @@ function SideMenu(props: ISideMenuProps): JSX.Element {
         </div>
         <Logo />
       </section>
-      <button className=" w-[20vw]" onClick={handleMenu} />
+      <button className=" w-[20vw] bg-gray-400/60" onClick={handleMenu} />
     </div>
   )
 }

@@ -6,6 +6,7 @@ interface IEmptyProps {
   text?: string
 }
 
+// TODO make image responsive
 function Empty(props: IEmptyProps): JSX.Element {
   return (
     <section className="flex flex-col items-center space-y-4 mt-12 w-[100vw]">

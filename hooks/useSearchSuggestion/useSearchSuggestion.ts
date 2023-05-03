@@ -1,17 +1,20 @@
-import type { IRandomDrink } from 'types'
 import React from 'react'
+import useSWR from 'swr'
+import { fetcher } from 'utils'
+import type { ICardDrink, IRandomDrink } from 'types'
 
-function useSearchSuggestion(res: {
-  data: { drinks: IRandomDrink[] }
-}): IRandomDrink[] | [] {
-  const [searchSuggestions, setSearchSuggestionsByName] =
-    React.useState<IRandomDrink[]>()
+function useSearchSuggestion(url: string): IRandomDrink[] | ICardDrink[] | [] {
+  const [searchSuggestions, setSearchSuggestionsByName] = React.useState<
+    IRandomDrink[] | ICardDrink[]
+  >()
+
+  const searchSuggestionsRes = useSWR(url, fetcher)
 
   React.useEffect(() => {
-    if (typeof res.data !== 'undefined') {
-      setSearchSuggestionsByName(res.data.drinks)
+    if (typeof searchSuggestionsRes.data !== 'undefined') {
+      setSearchSuggestionsByName(searchSuggestionsRes.data.drinks)
     }
-  }, [res.data])
+  }, [searchSuggestionsRes.data])
 
   if (typeof searchSuggestions === 'undefined' || searchSuggestions === null) {
     return []

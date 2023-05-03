@@ -1,10 +1,9 @@
 import React from 'react'
-import useSWR from 'swr'
-import { fetcher, debounce } from 'utils'
+import { debounce } from 'utils'
 import { searchBoxContext } from 'pages/_app'
 import { RiSearch2Line } from 'react-icons/ri'
-import type { ISearchBoxContext, IFetchedDrink } from 'types'
-import { SuggestionCard, Empty } from 'components'
+import type { ISearchBoxContext } from 'types'
+import { Suggestions } from 'components'
 import { useInputSuggestion, useSearchSuggestion } from 'hooks'
 import { useRouter } from 'next/router'
 
@@ -12,11 +11,13 @@ import { useRouter } from 'next/router'
 // TODO show ingredients suggestions
 function SearchBox(): JSX.Element {
   const context = React.useContext(searchBoxContext) as ISearchBoxContext
-  const [searchBoxSuggestionsUrl, setSearchBoxSuggestionsUrl] = React.useState(
-    'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin'
-  )
+  const [searchBoxSuggestionsUrl, setSearchBoxSuggestionsUrl] = React.useState({
+    byName: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin',
+    byIngredient: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=gin'
+  })
   const [searchValue, setSearchValue] = React.useState<string>()
-  const url = 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+  const randomDrinkUrl =
+    'https://www.thecocktaildb.com/api/json/v1/1/random.php'
   const router = useRouter()
 
   const handleHideSearchBox = (): void => {
@@ -29,9 +30,10 @@ function SearchBox(): JSX.Element {
     const target = event.target as HTMLInputElement
     debounce(() => {
       setSearchValue(target?.value)
-      setSearchBoxSuggestionsUrl(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${target?.value}`
-      )
+      setSearchBoxSuggestionsUrl({
+        byName: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${target.value}`,
+        byIngredient: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${target.value}`
+      })
     }, 100)()
   }
 
@@ -41,23 +43,15 @@ function SearchBox(): JSX.Element {
     router.push(`/search/${searchValue}`)
   }
 
-  const randomDrink: IFetchedDrink = useSWR(url, fetcher)
-  const searchSuggestionsByNameRes = useSWR(searchBoxSuggestionsUrl, fetcher)
-
-  const inputSuggestion = useInputSuggestion(randomDrink)
+  const inputSuggestion = useInputSuggestion(randomDrinkUrl)
 
   const searchSuggestionsByName = useSearchSuggestion(
-    searchSuggestionsByNameRes
+    searchBoxSuggestionsUrl.byName
   )
 
-  const suggestionResults = React.useMemo(() => {
-    if (searchSuggestionsByName?.length <= 0) {
-      return <Empty text={inputSuggestion} />
-    }
-    return searchSuggestionsByName?.map((suggestion) => (
-      <SuggestionCard drink={suggestion} key={suggestion.idDrink} />
-    ))
-  }, [searchSuggestionsByName])
+  const searchSuggestionsByIngredient = useSearchSuggestion(
+    searchBoxSuggestionsUrl.byIngredient
+  )
 
   return (
     <div
@@ -93,9 +87,18 @@ function SearchBox(): JSX.Element {
             ESC
           </button>
         </form>
-        <div className="px-1 pt-4 space-y-2 h-fit max-h-[60vh] overflow-y-auto scrollbar-thumb-action scrollbar-thin">
-          {suggestionResults}
-        </div>
+        <section className=" h-fit max-h-[60vh] space-y-4 overflow-y-auto scrollbar-thumb-action scrollbar-thin">
+          <Suggestions drinks={searchSuggestionsByName}>
+            <h1 className="text-heading text-lg tracking-wider font-heading font-semibold">
+              By Name:
+            </h1>
+          </Suggestions>
+          <Suggestions drinks={searchSuggestionsByIngredient}>
+            <h1 className="text-heading text-lg tracking-wider font-heading font-semibold">
+              By Ingredient:
+            </h1>
+          </Suggestions>
+        </section>
       </section>
     </div>
   )

@@ -16,6 +16,7 @@ import InstructionSection from './InstructionSection/InstructionSection'
 import DrinkDetailSection from './DrinkDetailSection/DrinkDetailSection'
 import SearchBox from './SearchBox/SearchBox'
 import SuggestionCard from './SuggestionCard/SuggestionCard'
+import Suggestions from './Suggestions/Suggestions'
 import Empty from './Empty/Empty'
 import PageFilterGrid, {
   FilterCardContext
@@ -42,5 +43,6 @@ export {
   DrinkDetailSection,
   SearchBox,
   SuggestionCard,
+  Suggestions,
   Empty
 }
