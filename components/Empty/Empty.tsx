@@ -9,7 +9,7 @@ interface IEmptyProps {
 // TODO make image responsive
 function Empty(props: IEmptyProps): JSX.Element {
   return (
-    <section className="flex flex-col items-center space-y-4 mt-12 w-[100vw]">
+    <section className="flex flex-col items-center justify-center space-y-4 mt-12 min-w-full col-span-full">
       <Image
         src={emptyImage}
         height={400}
