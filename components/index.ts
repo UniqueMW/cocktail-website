@@ -18,6 +18,7 @@ import SearchBox from './SearchBox/SearchBox'
 import SuggestionCard from './SuggestionCard/SuggestionCard'
 import Suggestions from './Suggestions/Suggestions'
 import Empty from './Empty/Empty'
+import Footer from './Footer/Footer'
 import PageFilterGrid, {
   FilterCardContext
 } from './PageFilterGrid/PageFilterGrid'
@@ -44,5 +45,6 @@ export {
   SearchBox,
   SuggestionCard,
   Suggestions,
-  Empty
+  Empty,
+  Footer
 }

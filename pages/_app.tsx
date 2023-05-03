@@ -3,7 +3,7 @@ import '@/styles/globals.css'
 import { Fraunces, DM_Sans } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import type { ISearchBoxContext } from 'types'
-import { Nav, MobileNav, SideMenu, SearchBox } from 'components'
+import { Nav, MobileNav, SideMenu, SearchBox, Footer } from 'components'
 import FocusLock from 'react-focus-lock'
 import '@/global.css'
 
@@ -54,6 +54,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       </searchBoxContext.Provider>
       <MobileNav setOpenMenu={setOpenMenu} />
       <Component {...pageProps} />
+      <Footer />
     </main>
   )
 }
