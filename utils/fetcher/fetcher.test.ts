@@ -3,18 +3,17 @@ import { setupServer } from 'msw/node'
 import fetcher from './fetcher'
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-const handlers = [
-  rest.get(url, (req, res, ctx) => {
-    return res(
+
+const server = setupServer(
+  rest.get(url, async (req, res, ctx) => {
+    return await res(
       ctx.status(200),
       ctx.json({
         test: 'test'
       })
     )
   })
-]
-
-const server = setupServer(...handlers)
+)
 
 beforeAll(() => {
   server.listen()
