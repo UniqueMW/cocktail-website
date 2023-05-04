@@ -3,7 +3,10 @@ import { render, screen } from '@testing-library/react'
 import Grid from './Grid'
 import { drinksList } from 'testProps'
 
-jest.mock('components', () => ({ Card: () => <h1>Card</h1> }))
+jest.mock('components', () => ({
+  Card: () => <h1>Card</h1>,
+  Empty: () => <h1>Empty</h1>
+}))
 
 test('Should render Grid Component without a children component.', () => {
   render(<Grid drinks={drinksList} />)
@@ -25,4 +28,12 @@ test('Should render Grid Component with a children component.', () => {
 
   expect(cards.length).toBe(drinksList.length)
   expect(gridTitle).toBeInTheDocument()
+})
+
+test('Should render Empty component if drinks is an empty array.', () => {
+  render(<Grid drinks={[]} />)
+
+  const emptyComponent = screen.getByRole('heading', { name: /empty/i })
+
+  expect(emptyComponent).toBeInTheDocument()
 })
