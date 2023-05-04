@@ -16,8 +16,6 @@ interface IDrinkDetailPageProps {
   drink: IRandomDrink
 }
 
-// TODO break this page to components
-
 function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
   const [isBookmarked, setIsBookmarked] = React.useState<boolean>()
 
@@ -48,7 +46,7 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
   }
 
   return (
-    <section className="grid lg:grid-cols-2 grid-cols-1 items-center justify-between lg:gap-6 lg:px-10 px-2 ">
+    <section className="grid lg:grid-cols-2 grid-cols-1 items-center justify-between lg:gap-6 lg:px-10 px-2 min-h-screen">
       <section className="flex flex-col justify-center space-y-10 lg:order-1 order-2">
         <div className="space-y-3 pt-6 lg:pt-0">
           <h1 className="text-4xl text-heading text-center lg:text-left font-heading font-semibold tracking-wider">

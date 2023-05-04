@@ -8,13 +8,12 @@ interface IGridProps {
   amount?: number
 }
 
-// TODO handle empty drinks list eg empty bookmark
 function Grid(props: IGridProps): JSX.Element {
   const cardArr = React.useMemo(() => {
     let controlledDrinkAmount = props.drinks
     const amount = props.amount
     if (props.drinks.length <= 0) {
-      return <Empty text="Gin" />
+      return <Empty />
     }
 
     if (typeof amount === 'number') {

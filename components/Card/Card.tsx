@@ -7,8 +7,6 @@ interface ICardProps {
   drink: ICardDrink
 }
 
-// TODO add bookmark functionality
-
 function Card(props: ICardProps): JSX.Element {
   const [heading, setHeading] = React.useState<string>()
 

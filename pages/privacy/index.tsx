@@ -2,7 +2,7 @@ import React from 'react'
 
 function PrivacyPolicyPage(): JSX.Element {
   return (
-    <section className="text-xl text-paragraph tracking-wider space-y-2 px-2 lg:px-10">
+    <section className="text-xl text-paragraph tracking-wider space-y-2 px-2 lg:px-10 min-h-screen">
       <h1>Privacy Policy</h1>
       <p>Last updated: May 04, 2023</p>
       <p>

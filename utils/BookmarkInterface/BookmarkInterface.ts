@@ -1,6 +1,5 @@
 import type { ICardDrink, IRandomDrink } from 'types'
 
-// TODO: Create a github gist for this script.
 function addAndRemove(
   drink: IRandomDrink | ICardDrink,
   key: string = 'uniqueMWDrinks'

@@ -18,7 +18,7 @@ interface ICategoryPageProps {
 function CategoryPage(props: ICategoryPageProps): JSX.Element {
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c='
   return (
-    <section className="lg:px-20 px-2">
+    <section className="lg:px-20 px-2 min-h-screen">
       <PageFilterGrid
         drinks={props.drinks}
         filterList={props.filterList}

@@ -13,7 +13,7 @@ function BookmarkPage(): JSX.Element {
     }
   }, [])
   return (
-    <section className="lg:px-20 px-2">
+    <section className="lg:px-20 px-2 min-h-screen">
       <Grid drinks={drinks}>
         <h1 className="text-xl text-heading text-start w-full font-heading font-semibold tracking-wide">
           Bookmarked Drinks:

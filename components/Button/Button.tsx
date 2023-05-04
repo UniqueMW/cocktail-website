@@ -5,7 +5,6 @@ interface IButton {
   clickEvent?: () => void
 }
 
-// TODO make different variants of buttons.
 function Button(props: IButton): JSX.Element {
   const handleClick = (): void => {
     const eventHandler = props.clickEvent

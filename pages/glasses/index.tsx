@@ -15,12 +15,11 @@ interface IGlassesPageProps {
   defaultGlass: string
 }
 
-// TODO don't repeat pages implementation
 function GlassesPage(props: IGlassesPageProps): JSX.Element {
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?g='
 
   return (
-    <section className="lg:px-20 px-2 space-y-10">
+    <section className="lg:px-20 px-2 space-y-10 min-h-screen">
       <PageFilterGrid
         drinks={props.drinks}
         filterList={props.filterList}
