@@ -31,7 +31,7 @@ function Card(props: ICardProps): JSX.Element {
         height={300}
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg"
-        className="object-cover"
+        className="object-cover w-auto h-auto"
       />
       <h1 className="text-heading text-center font-heading text-lg tracking-wide">
         {heading}

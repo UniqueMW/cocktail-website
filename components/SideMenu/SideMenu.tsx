@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink, SearchBar, Logo } from 'components'
+import { useRouter } from 'next/router'
 
 interface ISideMenuProps {
   openMenu: boolean
@@ -7,6 +8,11 @@ interface ISideMenuProps {
 }
 
 function SideMenu(props: ISideMenuProps): JSX.Element {
+  const router = useRouter()
+
+  React.useEffect(() => {
+    props.setOpenMenu(false)
+  }, [router.pathname])
   // Changes back body overflow
   const handleMenu = (): void => {
     props.setOpenMenu(false)

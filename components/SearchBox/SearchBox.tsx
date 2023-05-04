@@ -7,8 +7,6 @@ import { Suggestions } from 'components'
 import { useInputSuggestion, useSearchSuggestion } from 'hooks'
 import { useRouter } from 'next/router'
 
-// TODO handle no results.
-// TODO show ingredients suggestions
 function SearchBox(): JSX.Element {
   const context = React.useContext(searchBoxContext) as ISearchBoxContext
   const [searchBoxSuggestionsUrl, setSearchBoxSuggestionsUrl] = React.useState({
@@ -24,6 +22,7 @@ function SearchBox(): JSX.Element {
     context.setOpenSearchBox(false)
   }
 
+  // generate urls based on searchInput value
   const handleSearchInput = (
     event: React.KeyboardEvent<HTMLInputElement>
   ): void => {
@@ -41,6 +40,7 @@ function SearchBox(): JSX.Element {
     event.preventDefault()
     // eslint-disable-next-line
     router.push(`/search/${searchValue}`)
+    handleHideSearchBox()
   }
 
   const inputSuggestion = useInputSuggestion(randomDrinkUrl)
@@ -61,7 +61,7 @@ function SearchBox(): JSX.Element {
       onClick={handleHideSearchBox}
     >
       <section
-        className=" z-40 text-heading bg-background shadow-lg md:w-1/2 w-5/6 p-5"
+        className=" z-40 text-heading bg-background shadow-lg md:w-1/2 w-11/12 p-5"
         onClick={(event) => {
           event.stopPropagation()
         }}
