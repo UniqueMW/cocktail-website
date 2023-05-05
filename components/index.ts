@@ -19,6 +19,7 @@ import SuggestionCard from './SuggestionCard/SuggestionCard'
 import Suggestions from './Suggestions/Suggestions'
 import Empty from './Empty/Empty'
 import Footer from './Footer/Footer'
+import ContactInput from './ContactInput/ContactInput'
 import PageFilterGrid, {
   FilterCardContext
 } from './PageFilterGrid/PageFilterGrid'
@@ -46,5 +47,6 @@ export {
   SuggestionCard,
   Suggestions,
   Empty,
-  Footer
+  Footer,
+  ContactInput
 }
