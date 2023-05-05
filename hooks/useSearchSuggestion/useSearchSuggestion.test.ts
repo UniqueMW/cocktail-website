@@ -21,11 +21,11 @@ const server = setupServer(
   })
 )
 
-beforeEach(() => {
+beforeAll(() => {
   server.listen()
 })
 
-afterEach(() => {
+afterAll(() => {
   server.close()
 })
 
