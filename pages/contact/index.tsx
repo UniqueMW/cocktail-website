@@ -7,18 +7,37 @@ import { MdSubject } from 'react-icons/md'
 function contactPage(): JSX.Element {
   return (
     <section className="flex flex-col items-center lg:px-10 px-2 h-screen">
-      <form className="flex flex-col items-center space-y-4 w-11/12 lg:w-2/5">
+      <form
+        className="flex flex-col items-center space-y-4 w-11/12 lg:w-2/5"
+        action="https://formsubmit.co/clifflikovo@gmail.com"
+        method="POST"
+      >
         <h1 className="text-xl text-heading text-left w-full font-heading tracking-wider">
           Contact Me
         </h1>
-        <ContactInput placeholder="Full Name" id="fullname" inputType="text">
+        <ContactInput
+          placeholder="Full Name"
+          id="fullname"
+          inputType="text"
+          name="name"
+        >
           <FaRegUser />
         </ContactInput>
 
-        <ContactInput placeholder="Email" id="email" inputType="email">
+        <ContactInput
+          placeholder="Email"
+          id="email"
+          inputType="email"
+          name="email"
+        >
           <AiOutlineMail />
         </ContactInput>
-        <ContactInput placeholder="Subject" id="subject" inputType="text">
+        <ContactInput
+          placeholder="Subject"
+          id="subject"
+          inputType="text"
+          name="_subject"
+        >
           <MdSubject />
         </ContactInput>
         <textarea

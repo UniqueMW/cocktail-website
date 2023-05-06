@@ -1,10 +1,11 @@
 import React from 'react'
 
 interface ContactInputProps {
+  name: string
   placeholder: string
   id: string
   inputType: 'email' | 'text'
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 function ContactInput(props: ContactInputProps): JSX.Element {
@@ -16,9 +17,11 @@ function ContactInput(props: ContactInputProps): JSX.Element {
       {props.children}
       <input
         placeholder={props.placeholder}
+        name={props.name}
         type={props.inputType}
         className="w-full outline-none bg-background border-l-2 border-l-heading pl-2"
         id={props.id}
+        required
       />
     </label>
   )
