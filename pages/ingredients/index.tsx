@@ -8,6 +8,7 @@ import type {
   IIngredientListObj,
   IGlassListObj
 } from 'types'
+import Head from 'next/head'
 
 interface IIngredientsPageProps {
   drinks: ICardDrink[]
@@ -19,18 +20,23 @@ function IngredientsPage(props: IIngredientsPageProps): JSX.Element {
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='
 
   return (
-    <section className="lg:px-20 px-2 min-h-screen">
-      <PageFilterGrid
-        drinks={props.drinks}
-        filterList={props.filterList}
-        defaultCard={props.defaultIngredient}
-        url={url}
-      >
-        <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
-          By Ingredients:
-        </h1>
-      </PageFilterGrid>
-    </section>
+    <>
+      <Head>
+        <title>ingredients</title>
+      </Head>
+      <section className="lg:px-20 px-2 min-h-screen">
+        <PageFilterGrid
+          drinks={props.drinks}
+          filterList={props.filterList}
+          defaultCard={props.defaultIngredient}
+          url={url}
+        >
+          <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
+            By Ingredients:
+          </h1>
+        </PageFilterGrid>
+      </section>
+    </>
   )
 }
 

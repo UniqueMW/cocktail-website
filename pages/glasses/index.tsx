@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Head from 'next/head'
 import type { GetStaticProps } from 'next'
 import { PageFilterGrid } from 'components'
 import type {
@@ -19,18 +20,23 @@ function GlassesPage(props: IGlassesPageProps): JSX.Element {
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?g='
 
   return (
-    <section className="lg:px-20 px-2 space-y-10 min-h-screen">
-      <PageFilterGrid
-        drinks={props.drinks}
-        filterList={props.filterList}
-        defaultCard={props.defaultGlass}
-        url={url}
-      >
-        <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
-          By Glasses:
-        </h1>
-      </PageFilterGrid>
-    </section>
+    <>
+      <Head>
+        <title>glasses</title>
+      </Head>
+      <section className="lg:px-20 px-2 space-y-10 min-h-screen">
+        <PageFilterGrid
+          drinks={props.drinks}
+          filterList={props.filterList}
+          defaultCard={props.defaultGlass}
+          url={url}
+        >
+          <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
+            By Glasses:
+          </h1>
+        </PageFilterGrid>
+      </section>
+    </>
   )
 }
 

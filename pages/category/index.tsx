@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Head from 'next/head'
 import type { GetStaticProps } from 'next'
 import { PageFilterGrid } from 'components'
 import type {
@@ -18,18 +19,23 @@ interface ICategoryPageProps {
 function CategoryPage(props: ICategoryPageProps): JSX.Element {
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c='
   return (
-    <section className="lg:px-20 px-2 min-h-screen">
-      <PageFilterGrid
-        drinks={props.drinks}
-        filterList={props.filterList}
-        defaultCard={props.defaultCategory}
-        url={url}
-      >
-        <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
-          By Category:
-        </h1>
-      </PageFilterGrid>
-    </section>
+    <>
+      <Head>
+        <title>category</title>
+      </Head>
+      <section className="lg:px-20 px-2 min-h-screen">
+        <PageFilterGrid
+          drinks={props.drinks}
+          filterList={props.filterList}
+          defaultCard={props.defaultCategory}
+          url={url}
+        >
+          <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
+            By Category:
+          </h1>
+        </PageFilterGrid>
+      </section>
+    </>
   )
 }
 

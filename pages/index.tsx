@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Head from 'next/head'
 import type { GetStaticProps } from 'next'
 import React from 'react'
 import { Hero, Grid, GridTitle } from 'components'
@@ -20,18 +21,23 @@ interface IHomeProps {
 
 export default function Home(props: IHomeProps): JSX.Element {
   return (
-    <div className=" lg:space-y-16 space-y-12 lg:px-20 px-2 pb-6 min-h-screen">
-      <Hero randomDrink={props.randomDrink} />
-      <Grid drinks={props.category.drinks} amount={10}>
-        <GridTitle>{props.category.title}</GridTitle>
-      </Grid>
-      <Grid drinks={props.ingredient.drinks} amount={10}>
-        <GridTitle>{`Made with ${props.ingredient.title}`}</GridTitle>
-      </Grid>
-      <Grid drinks={props.glass.drinks} amount={10}>
-        <GridTitle>{`served on a ${props.glass.title}`}</GridTitle>
-      </Grid>
-    </div>
+    <>
+      <Head>
+        <title>UniqueMW</title>
+      </Head>
+      <div className=" lg:space-y-16 space-y-12 lg:px-20 px-2 pb-6 min-h-screen">
+        <Hero randomDrink={props.randomDrink} />
+        <Grid drinks={props.category.drinks} amount={10}>
+          <GridTitle>{props.category.title}</GridTitle>
+        </Grid>
+        <Grid drinks={props.ingredient.drinks} amount={10}>
+          <GridTitle>{`Made with ${props.ingredient.title}`}</GridTitle>
+        </Grid>
+        <Grid drinks={props.glass.drinks} amount={10}>
+          <GridTitle>{`served on a ${props.glass.title}`}</GridTitle>
+        </Grid>
+      </div>
+    </>
   )
 }
 

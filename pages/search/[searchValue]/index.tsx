@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Head from 'next/head'
 import type { GetServerSideProps } from 'next'
 import { Grid } from 'components'
 import type { ICardDrink, IRandomDrink } from 'types'
@@ -38,31 +39,36 @@ function SearchPage(props: ISearchPageProps): JSX.Element {
   }, [props.searchValue])
 
   return (
-    <section className="px-2 lg:px-10">
-      <Grid drinks={drinks}>
-        <section className="space-y-4">
-          <h1 className="md:text-4xl text-2xl text-paragraph text-center font-paragraph tracking-wider">
-            Search Results Of: {props.searchValue}
-          </h1>
-          <div className="text-heading font-paragraph tracking-wider md:text-xl text-lg text-bold flex flex-row justify-center space-x-6">
-            <button
-              className={`${activeFilter === 'By Name' ? 'text-action' : ''}`}
-              onClick={handleSearchFilter}
-            >
-              By Name
-            </button>
-            <button
-              className={`${
-                activeFilter === 'By Ingredient' ? 'text-action' : ''
-              }`}
-              onClick={handleSearchFilter}
-            >
-              By Ingredient
-            </button>
-          </div>
-        </section>
-      </Grid>
-    </section>
+    <>
+      <Head>
+        <title>search</title>
+      </Head>
+      <section className="px-2 lg:px-10">
+        <Grid drinks={drinks}>
+          <section className="space-y-4">
+            <h1 className="md:text-4xl text-2xl text-paragraph text-center font-paragraph tracking-wider">
+              Search Results Of: {props.searchValue}
+            </h1>
+            <div className="text-heading font-paragraph tracking-wider md:text-xl text-lg text-bold flex flex-row justify-center space-x-6">
+              <button
+                className={`${activeFilter === 'By Name' ? 'text-action' : ''}`}
+                onClick={handleSearchFilter}
+              >
+                By Name
+              </button>
+              <button
+                className={`${
+                  activeFilter === 'By Ingredient' ? 'text-action' : ''
+                }`}
+                onClick={handleSearchFilter}
+              >
+                By Ingredient
+              </button>
+            </div>
+          </section>
+        </Grid>
+      </section>
+    </>
   )
 }
 

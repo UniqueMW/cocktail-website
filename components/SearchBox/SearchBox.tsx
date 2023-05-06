@@ -39,7 +39,7 @@ function SearchBox(): JSX.Element {
   const handleSearch = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
     // eslint-disable-next-line
-    router.push(`/search/${searchValue}`)
+    router.push(`/search/${searchValue || 'Gin'}`)
     handleHideSearchBox()
   }
 

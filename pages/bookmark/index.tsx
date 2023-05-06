@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import { Grid } from 'components'
 import type { IRandomDrink } from 'types'
 
@@ -13,13 +14,18 @@ function BookmarkPage(): JSX.Element {
     }
   }, [])
   return (
-    <section className="lg:px-20 px-2 min-h-screen">
-      <Grid drinks={drinks}>
-        <h1 className="text-xl text-heading text-start w-full font-heading font-semibold tracking-wide">
-          Bookmarked Drinks:
-        </h1>
-      </Grid>
-    </section>
+    <>
+      <Head>
+        <title>bookmark</title>
+      </Head>
+      <section className="lg:px-20 px-2 min-h-screen">
+        <Grid drinks={drinks}>
+          <h1 className="text-xl text-heading text-start w-full font-heading font-semibold tracking-wide">
+            Bookmarked Drinks:
+          </h1>
+        </Grid>
+      </section>
+    </>
   )
 }
 
