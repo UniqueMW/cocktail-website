@@ -48,6 +48,7 @@ function contactPage(): JSX.Element {
           <textarea
             placeholder="Your Message..."
             className="bg-background text-lg text-paragraph tracking-wider font-paragraph px-2 border border-heading h-72 w-full"
+            required
           />
           <button
             className="text-lg text-heading font-heading tracking-wider border border-heading"
