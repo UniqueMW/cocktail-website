@@ -19,6 +19,9 @@ interface IHomeProps {
   glass: { title: string; drinks: ICardDrink[] }
 }
 
+// TODO add a custom 404 page
+// TODO improve seo
+
 export default function Home(props: IHomeProps): JSX.Element {
   return (
     <>
