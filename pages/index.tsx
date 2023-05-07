@@ -19,7 +19,6 @@ interface IHomeProps {
   glass: { title: string; drinks: ICardDrink[] }
 }
 
-// TODO add a custom 404 page
 // TODO improve seo
 
 export default function Home(props: IHomeProps): JSX.Element {
@@ -27,6 +26,10 @@ export default function Home(props: IHomeProps): JSX.Element {
     <>
       <Head>
         <title>UniqueMW</title>
+        <meta
+          name="description"
+          content="Scroll through a database of cocktails organized by category,ingredients and glasses."
+        />
       </Head>
       <div className=" lg:space-y-16 space-y-12 lg:px-20 px-2 pb-6 min-h-screen">
         <Hero randomDrink={props.randomDrink} />
@@ -91,7 +94,7 @@ export const getStaticProps: GetStaticProps = async () => {
    * pass the selected category and the fetched drinks as props
    */
 
-  // TODO add revalidate
+  // TODO add seo
   return {
     props: {
       randomDrink: randomDrinkRes.data.drinks[0],
@@ -107,6 +110,7 @@ export const getStaticProps: GetStaticProps = async () => {
         title: selectedGlass.strGlass,
         drinks: glassDrinkRes.data.drinks
       }
-    }
+    },
+    revalidate: 14400
   }
 }

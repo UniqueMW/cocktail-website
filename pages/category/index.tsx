@@ -22,6 +22,10 @@ function CategoryPage(props: ICategoryPageProps): JSX.Element {
     <>
       <Head>
         <title>category</title>
+        <meta
+          name="description"
+          content="Search through a database of cocktails by category e.g punch/party drink."
+        />
       </Head>
       <section className="lg:px-20 px-2 min-h-screen">
         <PageFilterGrid

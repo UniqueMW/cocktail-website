@@ -23,6 +23,10 @@ function GlassesPage(props: IGlassesPageProps): JSX.Element {
     <>
       <Head>
         <title>glasses</title>
+        <meta
+          name="description"
+          content="Search through a database of cocktails by the glass served on."
+        />
       </Head>
       <section className="lg:px-20 px-2 space-y-10 min-h-screen">
         <PageFilterGrid

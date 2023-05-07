@@ -50,6 +50,10 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
     <>
       <Head>
         <title>{drink.strDrink}</title>
+        <meta
+          name="description"
+          content="Read more about a drink including instructions and ingredients."
+        />
       </Head>
       <section className="grid lg:grid-cols-2 grid-cols-1 items-center justify-between lg:gap-6 lg:px-10 px-2 min-h-screen">
         <section className="flex flex-col justify-center space-y-10 lg:order-1 order-2">

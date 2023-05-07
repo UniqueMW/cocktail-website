@@ -17,6 +17,10 @@ function BookmarkPage(): JSX.Element {
     <>
       <Head>
         <title>bookmark</title>
+        <meta
+          name="description"
+          content="Scroll through a list of your favorite drinks."
+        />
       </Head>
       <section className="lg:px-20 px-2 min-h-screen">
         <Grid drinks={drinks}>

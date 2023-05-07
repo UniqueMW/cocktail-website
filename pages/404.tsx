@@ -13,6 +13,7 @@ function Page404(): JSX.Element {
     <>
       <Head>
         <title>404</title>
+        <meta name="description" content="Page not found." />
       </Head>
       <section className="flex flex-col justify-center space-y-4 items-center h-screen">
         <h1 className="text-heading text-8xl tracking-wider font-heading font-semibold">

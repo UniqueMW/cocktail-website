@@ -6,6 +6,10 @@ function PrivacyPolicyPage(): JSX.Element {
     <>
       <Head>
         <title>privacy</title>
+        <meta
+          name="description"
+          content="Know how your personal information is handled."
+        />
       </Head>
       <section className="text-xl text-paragraph tracking-wider space-y-2 px-2 lg:px-10 min-h-screen">
         <h1>Privacy Policy</h1>

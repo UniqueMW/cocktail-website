@@ -42,6 +42,10 @@ function SearchPage(props: ISearchPageProps): JSX.Element {
     <>
       <Head>
         <title>search</title>
+        <meta
+          name="description"
+          content="Search through a database of cocktails by name and ingredient."
+        />
       </Head>
       <section className="px-2 lg:px-10">
         <Grid drinks={drinks}>

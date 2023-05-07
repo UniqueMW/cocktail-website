@@ -23,6 +23,10 @@ function IngredientsPage(props: IIngredientsPageProps): JSX.Element {
     <>
       <Head>
         <title>ingredients</title>
+        <meta
+          name="description"
+          content="Search through a database of cocktails by ingredients e.g gin ."
+        />
       </Head>
       <section className="lg:px-20 px-2 min-h-screen">
         <PageFilterGrid

@@ -10,6 +10,10 @@ function contactPage(): JSX.Element {
     <>
       <Head>
         <title>contact</title>
+        <meta
+          name="description"
+          content="Get in touch with the guy behind uniqueMW."
+        />
       </Head>
       <section className="flex flex-col items-center lg:px-10 px-2 h-screen">
         <form
