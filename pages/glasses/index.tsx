@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Head from 'next/head'
 import type { GetStaticProps } from 'next'
-import { PageFilterGrid } from 'components'
+import { PageFilterGrid, SocialCards } from 'components'
 import type {
   ICardDrink,
   ICategoryListObj,
@@ -26,6 +26,10 @@ function GlassesPage(props: IGlassesPageProps): JSX.Element {
         <meta
           name="description"
           content="Search through a database of cocktails by the glass served on."
+        />
+        <SocialCards
+          title="glasses"
+          description="Search through a database of cocktails by the glass served on."
         />
       </Head>
       <section className="lg:px-20 px-2 space-y-10 min-h-screen">

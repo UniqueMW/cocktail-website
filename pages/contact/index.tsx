@@ -1,4 +1,4 @@
-import { ContactInput } from 'components'
+import { ContactInput, SocialCards } from 'components'
 import React from 'react'
 import Head from 'next/head'
 import { FaRegUser } from 'react-icons/fa'
@@ -13,6 +13,10 @@ function contactPage(): JSX.Element {
         <meta
           name="description"
           content="Get in touch with the guy behind uniqueMW."
+        />
+        <SocialCards
+          title="contact"
+          description="Get in touch with the guy behind uniqueMW."
         />
       </Head>
       <section className="flex flex-col items-center lg:px-10 px-2 h-screen">

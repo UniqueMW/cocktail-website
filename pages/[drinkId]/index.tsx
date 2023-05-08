@@ -3,9 +3,11 @@ import {
   Button,
   IngredientsSection,
   InstructionSection,
-  DrinkDetailSection
+  DrinkDetailSection,
+  SocialCards
 } from 'components'
 import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs'
+import * as _ from 'lodash'
 import type { IRandomDrink } from 'types'
 import type { GetServerSideProps } from 'next'
 import React from 'react'
@@ -52,7 +54,17 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
         <title>{drink.strDrink}</title>
         <meta
           name="description"
-          content="Read more about a drink including instructions and ingredients."
+          content={_.truncate(drink.strInstructions, {
+            length: 50,
+            omission: '...'
+          })}
+        />
+        <SocialCards
+          title={drink.strDrink}
+          description={_.truncate(drink.strInstructions, {
+            length: 50,
+            omission: '...'
+          })}
         />
       </Head>
       <section className="grid lg:grid-cols-2 grid-cols-1 items-center justify-between lg:gap-6 lg:px-10 px-2 min-h-screen">

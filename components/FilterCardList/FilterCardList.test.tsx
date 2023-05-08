@@ -9,7 +9,6 @@ import FilterCardList from './FilterCardList'
 import { filterListTest } from '@/testProps'
 
 jest.mock('components', () => ({ FilterCard: () => <h1>FilterCard</h1> }))
-const setActiveCardSpyFn = jest.fn()
 
 test('Should render FilterCardList', () => {
   render(
@@ -19,8 +18,6 @@ test('Should render FilterCardList', () => {
           IIngredientListObj & ICategoryListObj & IGlassListObj
         >
       }
-      activeCard="test"
-      setActiveCard={setActiveCardSpyFn}
     >
       test
     </FilterCardList>

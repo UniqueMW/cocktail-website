@@ -2,7 +2,7 @@ import axios from 'axios'
 import Head from 'next/head'
 import type { GetStaticProps } from 'next'
 import React from 'react'
-import { Hero, Grid, GridTitle } from 'components'
+import { Hero, Grid, GridTitle, SocialCards } from 'components'
 import { randomize } from 'utils'
 import type {
   IRandomDrink,
@@ -30,6 +30,10 @@ export default function Home(props: IHomeProps): JSX.Element {
         <meta
           name="description"
           content="Scroll through a database of cocktails organized by category,ingredients and glasses."
+        />
+        <SocialCards
+          title="UniqueMW"
+          description="Scroll through a database of cocktails organized by category,ingredients and glasses."
         />
       </Head>
       <div className=" lg:space-y-16 space-y-12 lg:px-20 px-2 pb-6 min-h-screen">

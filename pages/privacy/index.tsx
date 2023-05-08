@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { SocialCards } from 'components'
 
 function PrivacyPolicyPage(): JSX.Element {
   return (
@@ -9,6 +10,10 @@ function PrivacyPolicyPage(): JSX.Element {
         <meta
           name="description"
           content="Know how your personal information is handled."
+        />
+        <SocialCards
+          title="privacy"
+          description="Know how your personal information is handled."
         />
       </Head>
       <section className="text-xl text-paragraph tracking-wider space-y-2 px-2 lg:px-10 min-h-screen">

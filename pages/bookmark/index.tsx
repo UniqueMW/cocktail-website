@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { Grid } from 'components'
+import { Grid, SocialCards } from 'components'
 import type { IRandomDrink } from 'types'
 
 function BookmarkPage(): JSX.Element {
@@ -20,6 +20,10 @@ function BookmarkPage(): JSX.Element {
         <meta
           name="description"
           content="Scroll through a list of your favorite drinks."
+        />
+        <SocialCards
+          title="bookmark"
+          description="Scroll through a list of your favorite drinks."
         />
       </Head>
       <section className="lg:px-20 px-2 min-h-screen">

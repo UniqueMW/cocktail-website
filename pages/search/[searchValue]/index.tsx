@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Head from 'next/head'
 import type { GetServerSideProps } from 'next'
-import { Grid } from 'components'
+import { Grid, SocialCards } from 'components'
 import type { ICardDrink, IRandomDrink } from 'types'
 
 interface ISearchPageProps {
@@ -45,6 +45,10 @@ function SearchPage(props: ISearchPageProps): JSX.Element {
         <meta
           name="description"
           content="Search through a database of cocktails by name and ingredient."
+        />
+        <SocialCards
+          title="search"
+          description="Search through a database of cocktails by name and ingredient."
         />
       </Head>
       <section className="px-2 lg:px-10">
