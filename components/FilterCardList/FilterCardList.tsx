@@ -15,8 +15,8 @@ function FilterCardList(props: IFilterCardListProps): JSX.Element {
     setExpand(!expand)
   }
   const filterCardArr = React.useMemo(() => {
-    return props.filterList.map((filter) => (
-      <FilterCard key={filter.strCategory}>
+    return props.filterList.map((filter, index) => (
+      <FilterCard key={index}>
         {typeof filter.strCategory === 'string'
           ? filter.strCategory
           : typeof filter.strIngredient1 === 'string'
