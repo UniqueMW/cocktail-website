@@ -9,7 +9,8 @@ const nextConfig = {
         port: ''
       }
     ]
-  }
+  },
+  pageExtensions: ['page.tsx', 'page.jsx']
 }
 
 module.exports = nextConfig
