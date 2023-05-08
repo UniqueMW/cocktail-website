@@ -5,7 +5,7 @@ import { FaRegUser } from 'react-icons/fa'
 import { AiOutlineMail, AiOutlineSend } from 'react-icons/ai'
 import { MdSubject } from 'react-icons/md'
 
-function contactPage(): JSX.Element {
+function ContactPage(): JSX.Element {
   return (
     <>
       <Head>
@@ -24,6 +24,7 @@ function contactPage(): JSX.Element {
           className="flex flex-col items-center space-y-4 w-11/12 lg:w-2/5"
           action="https://formsubmit.co/clifflikovo@gmail.com"
           method="POST"
+          role="form"
         >
           <h1 className="text-xl text-heading text-left w-full font-heading tracking-wider">
             Contact Me
@@ -73,4 +74,4 @@ function contactPage(): JSX.Element {
   )
 }
 
-export default contactPage
+export default ContactPage
