@@ -48,8 +48,8 @@ function Hero({ randomDrink }: IHeroProps): JSX.Element {
       <Image
         src={randomDrink.strDrinkThumb}
         alt={randomDrink.strDrink}
-        width={400}
-        height={400}
+        width={340}
+        height={340}
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg"
         className="object-cover rounded-full justify-self-center"
