@@ -20,6 +20,7 @@ interface IHomeProps {
 }
 
 // TODO improve seo
+// TODO active page
 
 export default function Home(props: IHomeProps): JSX.Element {
   return (

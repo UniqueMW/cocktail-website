@@ -1,20 +1,34 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 // handle icons for nav link
 
 interface INavLinkProps {
   href: string
   icon?: boolean
-  children?: React.ReactNode
+  children: React.ReactNode
 }
 
 function NavLink(props: INavLinkProps): JSX.Element {
+  const [activePage, setActivePage] = React.useState(false)
+  const router = useRouter()
+
+  React.useEffect(() => {
+    if (router.pathname === props.href) {
+      setActivePage(true)
+    } else {
+      setActivePage(false)
+    }
+  }, [router.pathname])
+
   if (typeof props.icon === 'boolean' && props.icon) {
     return (
       <Link
         href={props.href}
-        className="text-xl font-heading tracking-wider capitalize text-paragraph h-11 px-2 border border-heading flex items-center"
+        className={`text-xl font-heading tracking-wider capitalize ${
+          activePage ? 'text-heading' : 'text-paragraph'
+        } h-11 px-2 border border-heading flex items-center`}
       >
         {props.children}
       </Link>
@@ -23,7 +37,9 @@ function NavLink(props: INavLinkProps): JSX.Element {
   return (
     <Link
       href={props.href}
-      className="text-xl capitalize font-heading tracking-wider text-paragraph"
+      className={`text-xl capitalize font-heading tracking-wider ${
+        activePage ? 'text-heading' : 'text-paragraph'
+      }`}
     >
       {props.children}
     </Link>

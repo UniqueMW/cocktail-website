@@ -105,7 +105,6 @@ export const getServerSideProps: GetServerSideProps = async function (context) {
     `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`
   )
 
-  console.log(drinkDetailRes.data, 'response')
   const isDrinkDetailAvailable = Boolean(drinkDetailRes.data)
 
   if (!isDrinkDetailAvailable || drinkDetailRes.data.drinks === null) {
