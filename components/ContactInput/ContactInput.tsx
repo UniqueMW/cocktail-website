@@ -11,7 +11,7 @@ interface ContactInputProps {
 function ContactInput(props: ContactInputProps): JSX.Element {
   return (
     <label
-      className="flex flex-row bg-background text-lg text-heading tracking-wider font-heading border border-heading h-12 pl-2 space-x-2 items-center w-full"
+      className="flex flex-row bg-background text-base text-heading tracking-wider font-heading border border-heading h-12 pl-2 space-x-2 items-center w-full"
       htmlFor={props.id}
     >
       {props.children}

@@ -39,7 +39,7 @@ function GlassesPage(props: IGlassesPageProps): JSX.Element {
           defaultCard={props.defaultGlass}
           url={url}
         >
-          <h1 className="text-xl text-heading font-heading font-semibold tracking-wide">
+          <h1 className="text-lg text-heading font-heading font-semibold tracking-wide">
             By Glasses:
           </h1>
         </PageFilterGrid>

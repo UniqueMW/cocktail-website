@@ -66,7 +66,7 @@ function SearchBox(): JSX.Element {
         }}
       >
         <form
-          className=" flex flex-row items-center space-x-2 p-1"
+          className=" flex flex-row items-center space-x-2 p-1 text-base"
           role="form"
           onSubmit={handleSearch}
         >
@@ -75,7 +75,7 @@ function SearchBox(): JSX.Element {
           </button>
           <input
             placeholder={`Try ${inputSuggestion}`}
-            className="bg-background w-full px-1 h-11 text-lg tracking wide text-heading font-heading border border-heading focus:outline"
+            className="bg-background w-full px-1 h-11 text-base tracking wide text-heading font-heading border border-heading focus:outline"
             onKeyDown={handleSearchInput}
           />
           <button
@@ -88,12 +88,12 @@ function SearchBox(): JSX.Element {
         </form>
         <section className=" h-fit max-h-[60vh] space-y-4 overflow-y-auto scrollbar-thumb-action scrollbar-thin">
           <Suggestions drinks={searchSuggestionsByName}>
-            <h1 className="text-heading text-lg tracking-wider font-heading font-semibold">
+            <h1 className="text-heading text-base tracking-wider font-heading font-semibold">
               By Name:
             </h1>
           </Suggestions>
           <Suggestions drinks={searchSuggestionsByIngredient}>
-            <h1 className="text-heading text-lg tracking-wider font-heading font-semibold">
+            <h1 className="text-heading text-base tracking-wider font-heading font-semibold">
               By Ingredient:
             </h1>
           </Suggestions>

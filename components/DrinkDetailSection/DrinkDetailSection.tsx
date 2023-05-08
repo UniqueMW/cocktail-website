@@ -11,7 +11,7 @@ interface IDrinkDetailSection {
 
 function DrinkDetailSection(props: IDrinkDetailSection): JSX.Element {
   return (
-    <section className="flex flex-row justify-center lg:justify-start flex-wrap text-paragraph font-paragraph">
+    <section className="flex flex-row justify-center lg:justify-start flex-wrap text-sm text-paragraph font-paragraph">
       <h2 className="flex flex-row items-center mr-4">
         <AiOutlineCalendar /> {props.date}
       </h2>

@@ -26,7 +26,7 @@ function ContactPage(): JSX.Element {
           method="POST"
           role="form"
         >
-          <h1 className="text-xl text-heading text-left w-full font-heading tracking-wider">
+          <h1 className="text-lg text-heading text-left w-full font-heading tracking-wider">
             Contact Me
           </h1>
           <ContactInput
@@ -56,11 +56,11 @@ function ContactPage(): JSX.Element {
           </ContactInput>
           <textarea
             placeholder="Your Message..."
-            className="bg-background text-lg text-paragraph tracking-wider font-paragraph px-2 border border-heading h-72 w-full"
+            className="bg-background text-base text-paragraph tracking-wider font-paragraph px-2 border border-heading h-72 w-full"
             required
           />
           <button
-            className="text-lg text-heading font-heading tracking-wider border border-heading"
+            className="text-base text-heading font-heading tracking-wider border border-heading"
             type="submit"
           >
             <div className="flex flex-row space-x-2 items-center px-6 py-3">

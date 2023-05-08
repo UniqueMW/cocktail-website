@@ -19,11 +19,11 @@ function FilterCard(props: IFilterCardProps): JSX.Element {
   }
   return (
     <button
-      className={`text-lg  font-paragraph border h-12 ${
+      className={`text-sm  font-paragraph border h-12 ${
         props.children === activeCard
           ? 'border-action text-action'
           : 'border-paragraph text-paragraph'
-      } rounded-3xl p-2`}
+      } rounded-3xl px-2`}
       onClick={handleActive}
     >
       {props.children}

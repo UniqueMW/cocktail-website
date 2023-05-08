@@ -16,7 +16,7 @@ function PrivacyPolicyPage(): JSX.Element {
           description="Know how your personal information is handled."
         />
       </Head>
-      <section className="text-xl text-paragraph tracking-wider space-y-2 px-2 lg:px-10 min-h-screen">
+      <section className="text-lg text-paragraph tracking-wider space-y-2 px-2 lg:px-10 min-h-screen">
         <h1>Privacy Policy</h1>
         <p>Last updated: May 04, 2023</p>
         <p>

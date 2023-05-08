@@ -11,10 +11,10 @@ function Footer(): JSX.Element {
         <NavLink href="/privacy">Privacy Policy</NavLink>
       </section>
       <section className="flex md:flex-row flex-col-reverse items-center justify-between border-t-2 border-t-action py-2">
-        <h1 className="text-lg text-center text-heading tracking-wider font-heading">
+        <h1 className="text-base text-center text-heading tracking-wider font-heading">
           &copy; {new Date().getFullYear()} UniqueMW. All right reserved.
         </h1>
-        <div className="flex flex-row items-center text-2xl text-heading font-heading tracking-wider space-x-4">
+        <div className="flex flex-row items-center text-xl text-heading font-heading tracking-wider space-x-4">
           <BsGithub />
           <BsTwitter />
         </div>

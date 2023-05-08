@@ -7,11 +7,11 @@ interface IInstructionProps {
 function InstructionSection(props: IInstructionProps): JSX.Element {
   return (
     <section className="space-y-3">
-      <h3 className="text-heading text-center lg:text-left text-2xl tracking-wider font-heading border-b-2 border-action">
+      <h3 className="text-heading text-center lg:text-left text-xl tracking-wider font-heading border-b-2 border-action">
         Instructions
       </h3>
       <p
-        className="text-paragraph text-xl tracking-wide font-paragraph"
+        className="text-paragraph text-base tracking-wide font-paragraph"
         role="paragraph"
       >
         {props.instruction}

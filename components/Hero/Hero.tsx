@@ -56,14 +56,14 @@ function Hero({ randomDrink }: IHeroProps): JSX.Element {
       />
       <section className="flex flex-col lg:items-start items-center space-y-6">
         <div className="w-20 bg-action h-1 hidden lg:block" />
-        <h1 className="text-heading text-4xl text-center lg:text-left font-heading tracking-wider">
+        <h1 className="text-heading text-3xl text-center lg:text-left font-heading tracking-wider">
           {randomDrink.strDrink}
         </h1>
-        <h2 className="text-action italic text-center lg:text-left font-paragraph text-base">
+        <h2 className="text-action italic text-center lg:text-left font-paragraph text-xs">
           {randomDrink.strAlcoholic}
         </h2>
         <p
-          className="text-paragraph text-xl text-center lg:text-left font-paragraph tracking-wide"
+          className="text-paragraph text-base text-center lg:text-left font-paragraph tracking-wide"
           role="paragraph"
         >
           {instructions}

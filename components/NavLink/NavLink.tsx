@@ -24,7 +24,7 @@ function NavLink(props: INavLinkProps): JSX.Element {
     return (
       <Link
         href={props.href}
-        className={`text-xl font-heading tracking-wider capitalize ${
+        className={`text-base font-heading tracking-wider capitalize ${
           activePage ? 'text-heading' : 'text-paragraph'
         } h-11 px-2 border border-heading flex items-center font-heading`}
       >
@@ -35,7 +35,7 @@ function NavLink(props: INavLinkProps): JSX.Element {
   return (
     <Link
       href={props.href}
-      className={`text-xl capitalize font-heading tracking-wider ${
+      className={`text-base capitalize font-heading tracking-wider ${
         activePage ? 'text-heading' : 'text-paragraph'
       }`}
     >
