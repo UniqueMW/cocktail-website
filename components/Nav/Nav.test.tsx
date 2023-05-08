@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { searchBoxContext } from '@/pages/_app'
+import { searchBoxContext } from '@/pages/_app.page'
 import Nav from './Nav'
 
 jest.mock('components', () => ({

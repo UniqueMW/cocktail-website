@@ -2,7 +2,7 @@ import React from 'react'
 import { screen, render } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import SuggestionCard from './SuggestionCard'
-import { searchBoxContext } from 'pages/_app'
+import { searchBoxContext } from '@/pages/_app.page'
 import { randomDrink, cardDrink } from 'testProps'
 
 const setOpenSearchBoxSpy = jest.fn()

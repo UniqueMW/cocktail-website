@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import type { ICardDrink, IRandomDrink } from 'types'
-import { searchBoxContext } from 'pages/_app'
+import { searchBoxContext } from '@/pages/_app.page'
 
 interface ISuggestionCardProps {
   drink: IRandomDrink | ICardDrink

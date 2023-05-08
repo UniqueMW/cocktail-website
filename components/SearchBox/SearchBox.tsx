@@ -1,6 +1,6 @@
 import React from 'react'
 import { debounce } from 'utils'
-import { searchBoxContext } from 'pages/_app'
+import { searchBoxContext } from '@/pages/_app.page'
 import { RiSearch2Line } from 'react-icons/ri'
 import type { ISearchBoxContext } from 'types'
 import { Suggestions } from 'components'

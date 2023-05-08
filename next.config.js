@@ -10,7 +10,7 @@ const nextConfig = {
       }
     ]
   },
-  pageExtensions: ['page.tsx', 'page.jsx']
+  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js']
 }
 
 module.exports = nextConfig

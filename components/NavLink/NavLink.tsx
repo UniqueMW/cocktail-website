@@ -28,7 +28,7 @@ function NavLink(props: INavLinkProps): JSX.Element {
         href={props.href}
         className={`text-xl font-heading tracking-wider capitalize ${
           activePage ? 'text-heading' : 'text-paragraph'
-        } h-11 px-2 border border-heading flex items-center`}
+        } h-11 px-2 border border-heading flex items-center font-heading`}
       >
         {props.children}
       </Link>

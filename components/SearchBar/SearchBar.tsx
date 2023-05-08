@@ -1,7 +1,7 @@
 import React from 'react'
 import { RxSlash } from 'react-icons/rx'
 import { RiSearch2Line } from 'react-icons/ri'
-import { searchBoxContext } from 'pages/_app'
+import { searchBoxContext } from '@/pages/_app.page'
 import { useInputSuggestion } from '@/hooks'
 
 function SearchBar(): JSX.Element {

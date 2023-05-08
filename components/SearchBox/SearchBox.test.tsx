@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { searchBoxContext } from 'pages/_app'
+import { searchBoxContext } from '@/pages/_app.page'
 import SearchBox from './SearchBox'
 
 const setOpenSearchBoxSpyFn = jest.fn()
