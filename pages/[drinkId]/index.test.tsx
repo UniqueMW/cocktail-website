@@ -18,8 +18,6 @@ jest.mock('components', () => ({
   SocialCards: () => <h1>SocialCards</h1>
 }))
 
-// jest.mock('utils')
-
 test('Should render [drinkId] page.', () => {
   render(<DrinkDetailPage drink={randomDrink} />)
 

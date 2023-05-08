@@ -19,9 +19,6 @@ interface IHomeProps {
   glass: { title: string; drinks: ICardDrink[] }
 }
 
-// TODO improve seo
-// TODO active page
-
 export default function Home(props: IHomeProps): JSX.Element {
   return (
     <>
@@ -93,13 +90,6 @@ export const getStaticProps: GetStaticProps = async () => {
     `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${selectedGlass.strGlass}`
   )
 
-  /**
-   * select random category
-   * fetch the selected category
-   * pass the selected category and the fetched drinks as props
-   */
-
-  // TODO add seo
   return {
     props: {
       randomDrink: randomDrinkRes.data.drinks[0],

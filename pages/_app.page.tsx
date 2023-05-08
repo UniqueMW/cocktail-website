@@ -1,5 +1,4 @@
 import React from 'react'
-// import '@/styles/globals.css'
 import { Fraunces, DM_Sans } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import type { ISearchBoxContext } from 'types'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Card from './Card'
-import { cardDrink } from '@/testProps'
+import { cardDrink } from 'testProps'
 
 test('Should render Card Component.', () => {
   render(<Card drink={cardDrink} />)

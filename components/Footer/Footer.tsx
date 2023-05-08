@@ -2,7 +2,6 @@ import React from 'react'
 import { Logo, NavLink } from 'components'
 import { BsGithub, BsTwitter } from 'react-icons/bs'
 
-// TODO pick a good footer background color
 function Footer(): JSX.Element {
   return (
     <footer className="lg:px-10 px-2 w-full">

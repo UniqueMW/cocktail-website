@@ -1,12 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import type {
-  IIngredientListObj,
-  ICategoryListObj,
-  IGlassListObj
-} from '@/types'
+import type { IIngredientListObj, ICategoryListObj, IGlassListObj } from 'types'
 import FilterCardList from './FilterCardList'
-import { filterListTest } from '@/testProps'
+import { filterListTest } from 'testProps'
 
 jest.mock('components', () => ({ FilterCard: () => <h1>FilterCard</h1> }))
 

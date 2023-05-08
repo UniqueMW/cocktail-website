@@ -1,6 +1,6 @@
 import React from 'react'
 import { debounce } from 'utils'
-import { searchBoxContext } from '@/pages/_app.page'
+import { searchBoxContext } from 'pages/_app.page'
 import { RiSearch2Line } from 'react-icons/ri'
 import type { ISearchBoxContext } from 'types'
 import { Suggestions } from 'components'
@@ -22,7 +22,6 @@ function SearchBox(): JSX.Element {
     context.setOpenSearchBox(false)
   }
 
-  // generate urls based on searchInput value
   const handleSearchInput = (
     event: React.KeyboardEvent<HTMLInputElement>
   ): void => {

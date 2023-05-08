@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { FilterCardContext } from '../PageFilterGrid/PageFilterGrid'
+import { FilterCardContext } from 'components'
 import FilterCard from './FilterCard'
 
 const setActiveSpyFn = jest.fn()

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Home from './index.page'
-import { drinksList, randomDrink } from '@/testProps'
+import { drinksList, randomDrink } from 'testProps'
 
 jest.mock(
   'next/head',
