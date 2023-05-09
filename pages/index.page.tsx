@@ -106,6 +106,6 @@ export const getStaticProps: GetStaticProps = async () => {
         drinks: glassDrinkRes.data.drinks
       }
     },
-    revalidate: 14400
+    revalidate: 7200
   }
 }
