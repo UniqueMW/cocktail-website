@@ -9,7 +9,15 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:chrome": "playwright test --project=chromium",
+    "e2e:chrome:ui": "playwright test --ui --project=chromium",
+    "e2e:chrome:headed": "playwright test --project=chromium --headed",
+    "e2e:webkit": "playwright test --project=webkit",
+    "e2e:firefox": "playwright test --project=firefox",
+    "e2e:headed": "playwright test --headed"
   },
   "dependencies": {
     "@types/lodash": "^4.14.194",
@@ -35,6 +43,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
+    "@playwright/test": "^1.33.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
