@@ -46,13 +46,12 @@ test('Navigating to privacy policy page', async ({ page }) => {
 })
 
 // working progress
-test.skip('Navigating to bookmark page', async ({ page }) => {
-  await page.goto('/')
+test.only('Navigating to bookmark page', async ({ page }) => {
+  const bookmarkButton = page
+    .getByRole('link')
+    .filter({ has: page.locator('svg') })
 
-  const elements = page.locator('css=.h-11')
+  await bookmarkButton.click()
 
-  await elements.getByRole('link').click()
-
-  await expect(page).toHaveURL('/bookmark')
   await expect(page).toHaveTitle(/bookmark/i)
 })

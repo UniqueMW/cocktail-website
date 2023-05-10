@@ -23,6 +23,7 @@ function NavLink(props: INavLinkProps): JSX.Element {
   if (typeof props.icon === 'boolean' && props.icon) {
     return (
       <Link
+        id={props.href}
         href={props.href}
         className={`text-base font-heading tracking-wider capitalize ${
           activePage ? 'text-heading' : 'text-paragraph'
