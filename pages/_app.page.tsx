@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import { Fraunces, DM_Sans } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import type { ISearchBoxContext } from 'types'
@@ -41,19 +42,27 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   }, [openSearchBox, openMenu])
 
   return (
-    <main
-      className={`${fraunces.variable} ${dmSans.variable} bg-background min-h-[100vh]`}
-    >
-      <searchBoxContext.Provider value={{ openSearchBox, setOpenSearchBox }}>
-        <Nav />
-        <FocusLock>
-          <SearchBox />
-          <SideMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
-        </FocusLock>
-      </searchBoxContext.Provider>
-      <MobileNav setOpenMenu={setOpenMenu} />
-      <Component {...pageProps} />
-      <Footer />
-    </main>
+    <>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="ly_KtSg21BuYucURvCZ2pP140H5zLMpXCCVx9lWHLZ0"
+        />
+      </Head>
+      <main
+        className={`${fraunces.variable} ${dmSans.variable} bg-background min-h-[100vh]`}
+      >
+        <searchBoxContext.Provider value={{ openSearchBox, setOpenSearchBox }}>
+          <Nav />
+          <FocusLock>
+            <SearchBox />
+            <SideMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
+          </FocusLock>
+        </searchBoxContext.Provider>
+        <MobileNav setOpenMenu={setOpenMenu} />
+        <Component {...pageProps} />
+        <Footer />
+      </main>
+    </>
   )
 }
