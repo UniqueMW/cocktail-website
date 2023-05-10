@@ -47,11 +47,8 @@ test('Navigating to privacy policy page', async ({ page }) => {
 
 // working progress
 test.only('Navigating to bookmark page', async ({ page }) => {
-  const bookmarkButton = page
-    .getByRole('link')
-    .filter({ has: page.locator('svg') })
-
-  await bookmarkButton.click()
+  await page.goto('https://localhost:3000')
+  await page.getByTestId('/bookmark').click()
 
   await expect(page).toHaveTitle(/bookmark/i)
 })
