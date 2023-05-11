@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Head from 'next/head'
-import type { GetStaticProps } from 'next'
+import type { GetServerSideProps } from 'next'
 import React from 'react'
 import { Hero, Grid, GridTitle, SocialCards } from 'components'
 import { randomize } from 'utils'
@@ -49,7 +49,7 @@ export default function Home(props: IHomeProps): JSX.Element {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const randomDrinkRes = await axios(
     'https://www.thecocktaildb.com/api/json/v1/1/random.php'
   )
@@ -105,7 +105,6 @@ export const getStaticProps: GetStaticProps = async () => {
         title: selectedGlass.strGlass,
         drinks: glassDrinkRes.data.drinks
       }
-    },
-    revalidate: 7200
+    }
   }
 }

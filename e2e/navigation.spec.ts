@@ -47,8 +47,9 @@ test('Navigating to privacy policy page', async ({ page }) => {
 
 // working progress
 test.only('Navigating to bookmark page', async ({ page }) => {
-  await page.goto('https://localhost:3000')
-  await page.getByTestId('/bookmark').click()
+  await page.goto('/')
+  await page.getByRole('navigation').getByTestId('/bookmark').click()
 
-  await expect(page).toHaveTitle(/bookmark/i)
+  await expect(page).toHaveURL('/bookmark')
+  // await expect(page).toHaveTitle(/bookmark/i)
 })
