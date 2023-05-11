@@ -45,11 +45,15 @@ test('Navigating to privacy policy page', async ({ page }) => {
   await expect(page).toHaveTitle(/privacy/i)
 })
 
-// working progress
 test.only('Navigating to bookmark page', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('navigation').getByTestId('/bookmark').click()
+  const navigationElement = page.getByRole('navigation')
+  const bookmarkLink = navigationElement
+    .getByRole('link')
+    .filter({ hasNot: page.getByText(/[a-zA-Z]/) })
+
+  await bookmarkLink.click()
 
   await expect(page).toHaveURL('/bookmark')
-  // await expect(page).toHaveTitle(/bookmark/i)
+  await expect(page).toHaveTitle(/bookmark/i)
 })
