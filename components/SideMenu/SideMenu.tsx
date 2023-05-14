@@ -22,6 +22,7 @@ function SideMenu(props: ISideMenuProps): JSX.Element {
       className={`${
         props.openMenu ? 'flex' : 'hidden'
       } flex-row justify-between lg:hidden fixed top-0 left-0 z-10 h-full`}
+      data-testid="sidemenu"
     >
       <section className="flex flex-col  items-center justify-between w-[80vw] border h-full bg-background py-6 px-3">
         <SearchBar />
