@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink, SearchBar, Logo } from 'components'
 import { BiBookmarks } from 'react-icons/bi'
+import { CiLogin } from 'react-icons/ci'
 
 function Nav(): JSX.Element {
   return (
@@ -16,6 +17,10 @@ function Nav(): JSX.Element {
         <NavLink href="/bookmark" icon>
           <BiBookmarks />
         </NavLink>
+        <button className="border border-heading text-heading font-heading min-w-fit h-11 px-2 flex flex-row items-center tracking-wider">
+          Sign In
+          <CiLogin className="ml-2" />
+        </button>
       </div>
     </nav>
   )
