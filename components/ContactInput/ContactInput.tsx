@@ -4,7 +4,7 @@ interface ContactInputProps {
   name: string
   placeholder: string
   id: string
-  inputType: 'email' | 'text'
+  inputType: 'email' | 'text' | 'password'
   children?: React.ReactNode
 }
 

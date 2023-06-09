@@ -1,3 +1,5 @@
+import type { Dispatch } from 'react'
+
 export interface IRandomDrink {
   idDrink: string
   strDrink: string
@@ -79,13 +81,23 @@ export interface IFilterCardContext {
   setActiveCard: (args: string) => void
 }
 
-export interface ISearchBoxContext {
-  openSearchBox: boolean
-  setOpenSearchBox: (args: boolean) => void
-}
-
 export interface IFetchedDrink {
   data: {
     drinks: IRandomDrink[] | ICardDrink[]
   }
+}
+
+export interface IGlobalState {
+  openSearchBox: boolean
+  openAuthBox: boolean
+}
+
+export interface IGlobalAction {
+  type: 'OPENAUTHBOX' | 'OPENSEARCHBOX'
+  payload: boolean
+}
+
+export interface IGlobalStateContext {
+  globalState: IGlobalState
+  dispatch: Dispatch<IGlobalAction>
 }

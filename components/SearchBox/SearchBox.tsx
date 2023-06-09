@@ -1,14 +1,14 @@
 import React from 'react'
 import { debounce } from 'utils'
-import { searchBoxContext } from 'pages/_app.page'
+import { globalStateContext } from 'pages/_app.page'
 import { RiSearch2Line } from 'react-icons/ri'
-import type { ISearchBoxContext } from 'types'
+import type { IGlobalStateContext } from 'types'
 import { Suggestions } from 'components'
 import { useInputSuggestion, useSearchSuggestion } from 'hooks'
 import { useRouter } from 'next/router'
 
 function SearchBox(): JSX.Element {
-  const context = React.useContext(searchBoxContext) as ISearchBoxContext
+  const context = React.useContext(globalStateContext) as IGlobalStateContext
   const [searchBoxSuggestionsUrl, setSearchBoxSuggestionsUrl] = React.useState({
     byName: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin',
     byIngredient: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=gin'
@@ -19,7 +19,7 @@ function SearchBox(): JSX.Element {
   const router = useRouter()
 
   const handleHideSearchBox = (): void => {
-    context.setOpenSearchBox(false)
+    context.dispatch({ type: 'OPENSEARCHBOX', payload: false })
   }
 
   const handleSearchInput = (
@@ -55,7 +55,7 @@ function SearchBox(): JSX.Element {
   return (
     <div
       className={`${
-        context.openSearchBox ? 'flex' : 'hidden'
+        context.globalState.openSearchBox ? 'flex' : 'hidden'
       } flex-col fixed left-0 top-0 z-30 justify-start py-16 items-center w-full  h-[150vh] bg-gray-600/80`}
       onClick={handleHideSearchBox}
     >

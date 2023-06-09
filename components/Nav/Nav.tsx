@@ -1,9 +1,13 @@
 import React from 'react'
 import { NavLink, SearchBar, Logo } from 'components'
 import { BiBookmarks } from 'react-icons/bi'
-import { CiLogin } from 'react-icons/ci'
-
+import { FaRegUser } from 'react-icons/fa'
+import { globalStateContext } from 'pages/_app.page'
 function Nav(): JSX.Element {
+  const globalContext = React.useContext(globalStateContext)
+  const handleOpenAuthBox = (): void => {
+    globalContext?.dispatch({ type: 'OPENAUTHBOX', payload: true })
+  }
   return (
     <nav className="lg:flex hidden flex-row justify-between items-center lg:px-10 px-10">
       <Logo />
@@ -17,9 +21,11 @@ function Nav(): JSX.Element {
         <NavLink href="/bookmark" icon>
           <BiBookmarks />
         </NavLink>
-        <button className="border border-heading text-heading font-heading min-w-fit h-11 px-2 flex flex-row items-center tracking-wider">
-          Sign In
-          <CiLogin className="ml-2" />
+        <button
+          className="border border-heading rounded-full text-heading font-heading min-w-fit p-3 flex flex-row items-center tracking-wider"
+          onClick={handleOpenAuthBox}
+        >
+          <FaRegUser />
         </button>
       </div>
     </nav>

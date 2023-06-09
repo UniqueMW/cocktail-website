@@ -1,14 +1,14 @@
 import React from 'react'
 import { RxSlash } from 'react-icons/rx'
 import { RiSearch2Line } from 'react-icons/ri'
-import { searchBoxContext } from 'pages/_app.page'
+import { globalStateContext } from 'pages/_app.page'
 import { useInputSuggestion } from 'hooks'
 
 function SearchBar(): JSX.Element {
-  const context = React.useContext(searchBoxContext)
+  const context = React.useContext(globalStateContext)
 
   const handleOpenSearchBox = (): void => {
-    context?.setOpenSearchBox(true)
+    context?.dispatch({ type: 'OPENSEARCHBOX', payload: true })
   }
 
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/random.php'

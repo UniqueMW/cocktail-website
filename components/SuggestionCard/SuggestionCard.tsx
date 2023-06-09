@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import type { ICardDrink, IRandomDrink } from 'types'
-import { searchBoxContext } from 'pages/_app.page'
+import { globalStateContext } from 'pages/_app.page'
 
 interface ISuggestionCardProps {
   drink: IRandomDrink | ICardDrink
@@ -13,10 +13,10 @@ function SuggestionCard(props: ISuggestionCardProps): JSX.Element {
     alcoholicStatus = props.drink.strAlcoholic
   }
 
-  const searchBox = React.useContext(searchBoxContext)
+  const searchBox = React.useContext(globalStateContext)
 
   const handleHideSearchBox = (): void => {
-    searchBox?.setOpenSearchBox(false)
+    searchBox?.dispatch({ type: 'OPENSEARCHBOX', payload: false })
   }
 
   return (

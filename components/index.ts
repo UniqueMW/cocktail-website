@@ -21,6 +21,7 @@ import Empty from './Empty/Empty'
 import Footer from './Footer/Footer'
 import ContactInput from './ContactInput/ContactInput'
 import SocialCards from './SocialCards/SocialCards'
+import AuthBox from './AuthBox/AuthBox'
 import PageFilterGrid, {
   FilterCardContext
 } from './PageFilterGrid/PageFilterGrid'
@@ -50,5 +51,6 @@ export {
   Empty,
   Footer,
   ContactInput,
-  SocialCards
+  SocialCards,
+  AuthBox
 }
