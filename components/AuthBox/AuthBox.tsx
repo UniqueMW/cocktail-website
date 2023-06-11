@@ -2,10 +2,22 @@ import React from 'react'
 import { globalStateContext } from 'pages/_app.page'
 import GoogleButton from 'react-google-button'
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signInWithPopup
 } from 'firebase/auth'
 import { auth } from 'firebase.config'
+
+/**
+ * should have a seperate sign up page
+ * which requires a fullname
+ * should have a profile page
+ * add remember me feature
+ * forget password feature
+ * add facebook sign in
+ * show user image on nav
+ */
 
 function AuthBox(): JSX.Element {
   const formRef = React.useRef<HTMLFormElement>(null)
@@ -43,6 +55,17 @@ function AuthBox(): JSX.Element {
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         console.log('user created')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  const handleGoogleAuth = (): void => {
+    const provider = new GoogleAuthProvider()
+    signInWithPopup(auth, provider)
+      .then((user) => {
+        console.log('user signed in with google')
       })
       .catch((error) => {
         console.log(error)
@@ -118,7 +141,7 @@ function AuthBox(): JSX.Element {
               sign in
             </button>
           </div>
-          <GoogleButton />
+          <GoogleButton onClick={handleGoogleAuth} />
         </form>
       </section>
     </div>
