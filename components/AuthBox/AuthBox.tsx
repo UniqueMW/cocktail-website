@@ -1,14 +1,52 @@
 import React from 'react'
-import { RiLockPasswordLine } from 'react-icons/ri'
-import { AiOutlineMail } from 'react-icons/ai'
-import { ContactInput } from 'components'
 import { globalStateContext } from 'pages/_app.page'
 import GoogleButton from 'react-google-button'
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from 'firebase/auth'
+import { auth } from 'firebase.config'
 
 function AuthBox(): JSX.Element {
+  const formRef = React.useRef<HTMLFormElement>(null)
   const globalContext = React.useContext(globalStateContext)
   const handleHideAuthBox = (): void => {
     globalContext?.dispatch({ type: 'OPENAUTHBOX', payload: false })
+  }
+
+  const handleSignIn = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault()
+    if (formRef.current === null) {
+      throw new Error('No form')
+    }
+    const password = formRef.current.userPassword.value
+    const email = formRef.current.userEmail.value
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log('user signed in')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  const handleSignUp = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault()
+    if (formRef.current === null) {
+      throw new Error('No form')
+    }
+    const password = formRef.current.userPassword.value
+    const email = formRef.current.userEmail.value
+    console.log(password, email)
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log('user created')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   return (
@@ -19,39 +57,64 @@ function AuthBox(): JSX.Element {
       onClick={handleHideAuthBox}
     >
       <section
-        className=" z-40 text-heading bg-background shadow-lg  md:w-fit w-11/12 py-5 px-10"
+        className=" z-40 text-heading bg-background shadow-lg md:w-1/3 w-11/12 py-5 px-10"
         onClick={(event) => {
           event.stopPropagation()
         }}
       >
         <form
-          className=" flex flex-col items-center p-1 text-base space-y-6"
+          className=" flex flex-col items-center p-1 text-base space-y-6 w-full"
           role="form"
+          ref={formRef}
         >
-          <h1 className="md:text-lg text-base font-heading tracking-wider text-left font- w-full">
+          <h1 className="md:text-lg text-base font-heading tracking-wider text-left font- w-full capitalize">
             Sign In/Up to UniqueMW
           </h1>
-          <div className="flex flex-col space-y-2">
-            <ContactInput
-              name="email"
-              placeholder="Email"
-              id="userEmail"
-              inputType="email"
-            >
-              <AiOutlineMail />
-            </ContactInput>
-            <ContactInput
-              name="password"
-              placeholder="Password"
-              id="userPassword"
-              inputType="password"
-            >
-              <RiLockPasswordLine />
-            </ContactInput>
+          <div className="flex flex-col space-y-2 w-full">
+            <div>
+              <label
+                htmlFor="email"
+                className="text-base font-heading tracking-wider"
+              >
+                Email Address
+              </label>
+              <input
+                type="email"
+                required
+                placeholder="Enter Your Email"
+                className="bg-transparent border border-heading w-full outline-none h-fit text-base py-2 px-1"
+                id="userEmail"
+                name="userEmail"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="userPassword"
+                className="text-base font-heading tracking-wider"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                required
+                placeholder="Enter Your Password"
+                className="bg-transparent border border-heading w-full outline-none h-fit text-base py-2 px-1"
+                id="userPassword"
+                name="userPassword"
+              />
+            </div>
           </div>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-2 text-heading font-paragraph text-sm tracking-wider">
-            <button className="px-6 bg-action py-3 uppercase">sign up</button>
-            <button className="border border-heading px-6 py-3 uppercase">
+            <button
+              className="px-6 bg-action py-3 uppercase"
+              onClick={handleSignUp}
+            >
+              sign up
+            </button>
+            <button
+              className="border border-heading px-6 py-3 uppercase"
+              onClick={handleSignIn}
+            >
               sign in
             </button>
           </div>

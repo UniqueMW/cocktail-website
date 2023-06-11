@@ -22,7 +22,7 @@ function Nav(): JSX.Element {
           <BiBookmarks />
         </NavLink>
         <button
-          className="border border-heading rounded-full text-heading font-heading min-w-fit p-3 flex flex-row items-center tracking-wider"
+          className="text-heading font-heading min-w-fit p-3 flex flex-row items-center tracking-wider"
           onClick={handleOpenAuthBox}
         >
           <FaRegUser />
