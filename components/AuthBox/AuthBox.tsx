@@ -1,8 +1,10 @@
 import React from 'react'
 import { globalStateContext } from 'pages/_app.page'
-import GoogleButton from 'react-google-button'
+import { AiFillFacebook } from 'react-icons/ai'
+import { FcGoogle } from 'react-icons/fc'
 import {
   GoogleAuthProvider,
+  TwitterAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup
@@ -72,6 +74,17 @@ function AuthBox(): JSX.Element {
       })
   }
 
+  const handleFacebookAuth = (): void => {
+    const provider = new TwitterAuthProvider()
+    signInWithPopup(auth, provider)
+      .then(() => {
+        console.log('user signed in with twitter.')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <div
       className={`${
@@ -90,9 +103,14 @@ function AuthBox(): JSX.Element {
           role="form"
           ref={formRef}
         >
-          <h1 className="md:text-lg text-base font-heading tracking-wider text-left font- w-full capitalize">
-            Sign In/Up to UniqueMW
-          </h1>
+          <div className="w-full">
+            <h1 className="md:text-lg text-base font-heading tracking-wider text-left font- w-full capitalize">
+              Welcome!
+            </h1>
+            <p className="text-paragraph md:text-base text-sm font-paragraph tracking-wide">
+              Sign in or up to continue.
+            </p>
+          </div>
           <div className="flex flex-col space-y-2 w-full">
             <div>
               <label
@@ -110,22 +128,6 @@ function AuthBox(): JSX.Element {
                 name="userEmail"
               />
             </div>
-            <div>
-              <label
-                htmlFor="userPassword"
-                className="text-base font-heading tracking-wider"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                required
-                placeholder="Enter Your Password"
-                className="bg-transparent border border-heading w-full outline-none h-fit text-base py-2 px-1"
-                id="userPassword"
-                name="userPassword"
-              />
-            </div>
           </div>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-2 text-heading font-paragraph text-sm tracking-wider">
             <button
@@ -141,7 +143,24 @@ function AuthBox(): JSX.Element {
               sign in
             </button>
           </div>
-          <GoogleButton onClick={handleGoogleAuth} />
+          <div className="flex flex-row items-center space-x-2">
+            <div className=" border-b border-action h-1 w-32"></div>
+            <h1 className="text-lg text-heading font-heading">or</h1>
+            <div className=" border-b border-action h-1 w-32"></div>
+          </div>
+          <div className="flex flex-col items-center space-y-2">
+            <h2 className="text-paragraph font-paragraph text-base tracking-wide capitalize">
+              Social Media Sign up or in
+            </h2>
+            <div className="space-x-2">
+              <button onClick={handleFacebookAuth}>
+                <AiFillFacebook className="text-[#1877F2] text-3xl" />
+              </button>
+              <button onClick={handleGoogleAuth}>
+                <FcGoogle className="text-3xl" />
+              </button>
+            </div>
+          </div>
         </form>
       </section>
     </div>

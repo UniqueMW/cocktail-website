@@ -10,7 +10,6 @@ function Nav(): JSX.Element {
     globalContext?.dispatch({ type: 'OPENAUTHBOX', payload: true })
   }
 
-  console.log(auth)
   return (
     <nav className="lg:flex hidden flex-row justify-between items-center lg:px-10 px-10">
       <Logo />
