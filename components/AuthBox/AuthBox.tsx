@@ -1,6 +1,6 @@
 import React from 'react'
 import { globalStateContext } from 'pages/_app.page'
-import { AiFillFacebook } from 'react-icons/ai'
+import { BsTwitter } from 'react-icons/bs'
 import { FcGoogle } from 'react-icons/fc'
 import {
   GoogleAuthProvider,
@@ -74,11 +74,11 @@ function AuthBox(): JSX.Element {
       })
   }
 
-  const handleFacebookAuth = (): void => {
+  const handleTwitterAuth = (): void => {
     const provider = new TwitterAuthProvider()
     signInWithPopup(auth, provider)
-      .then(() => {
-        console.log('user signed in with twitter.')
+      .then((user) => {
+        console.log('user signed in with twitter.', user)
       })
       .catch((error) => {
         console.log(error)
@@ -153,8 +153,8 @@ function AuthBox(): JSX.Element {
               Social Media Sign up or in
             </h2>
             <div className="space-x-2">
-              <button onClick={handleFacebookAuth}>
-                <AiFillFacebook className="text-[#1877F2] text-3xl" />
+              <button onClick={handleTwitterAuth}>
+                <BsTwitter className="text-[#1DA1F2] text-3xl" />
               </button>
               <button onClick={handleGoogleAuth}>
                 <FcGoogle className="text-3xl" />
