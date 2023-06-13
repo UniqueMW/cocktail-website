@@ -5,8 +5,7 @@ import { FcGoogle } from 'react-icons/fc'
 import {
   GoogleAuthProvider,
   TwitterAuthProvider,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  sendSignInLinkToEmail,
   signInWithPopup
 } from 'firebase/auth'
 import { auth } from 'firebase.config'
@@ -23,7 +22,14 @@ import { auth } from 'firebase.config'
 
 function AuthBox(): JSX.Element {
   const formRef = React.useRef<HTMLFormElement>(null)
+  const [isEmailSent, setIsEmailSent] = React.useState(false)
   const globalContext = React.useContext(globalStateContext)
+
+  const actionCodeSettings = {
+    url: 'https://uniquecocktailapp.netlify.app/',
+    handleCodeInApp: true
+  }
+
   const handleHideAuthBox = (): void => {
     globalContext?.dispatch({ type: 'OPENAUTHBOX', payload: false })
   }
@@ -33,30 +39,14 @@ function AuthBox(): JSX.Element {
     if (formRef.current === null) {
       throw new Error('No form')
     }
-    const password = formRef.current.userPassword.value
     const email = formRef.current.userEmail.value
+    console.log(email, 'entered')
 
-    signInWithEmailAndPassword(auth, email, password)
+    sendSignInLinkToEmail(auth, email, actionCodeSettings)
       .then(() => {
-        console.log('user signed in')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
-  const handleSignUp = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault()
-    if (formRef.current === null) {
-      throw new Error('No form')
-    }
-    const password = formRef.current.userPassword.value
-    const email = formRef.current.userEmail.value
-    console.log(password, email)
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        console.log('user created')
+        console.log('Email sent')
+        setIsEmailSent(true)
+        localStorage.setItem('userEmail', email)
       })
       .catch((error) => {
         console.log(error)
@@ -67,7 +57,7 @@ function AuthBox(): JSX.Element {
     const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider)
       .then((user) => {
-        console.log('user signed in with google')
+        console.log('user signed in with google', user)
       })
       .catch((error) => {
         console.log(error)
@@ -129,10 +119,16 @@ function AuthBox(): JSX.Element {
               />
             </div>
           </div>
+          {isEmailSent ? (
+            <p className="text-sm text-action tracking-wide text-left">
+              Click the link sent to your Email to continue.If you have not
+              received any Email try signing in or up again.
+            </p>
+          ) : null}
           <div className="grid md:grid-cols-2 grid-cols-1 gap-2 text-heading font-paragraph text-sm tracking-wider">
             <button
               className="px-6 bg-action py-3 uppercase"
-              onClick={handleSignUp}
+              onClick={handleSignIn}
             >
               sign up
             </button>

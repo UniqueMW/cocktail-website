@@ -1,9 +1,10 @@
 import axios from 'axios'
 import Head from 'next/head'
 import type { GetServerSideProps } from 'next'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Hero, Grid, GridTitle, SocialCards } from 'components'
 import { randomize } from 'utils'
+import { auth } from 'firebase.config'
 import type {
   IRandomDrink,
   ICategoryListObj,
@@ -11,6 +12,7 @@ import type {
   ICardDrink,
   IGlassListObj
 } from 'types'
+import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth'
 
 interface IHomeProps {
   randomDrink: IRandomDrink
@@ -20,6 +22,27 @@ interface IHomeProps {
 }
 
 export default function Home(props: IHomeProps): JSX.Element {
+  useEffect(() => {
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      let email = localStorage.getItem('userEmail')
+
+      if (email === null) {
+        email = window.prompt(
+          'Seems like you changed your device, Enter your Email again to continue.'
+        )
+      }
+
+      if (typeof email === 'string') {
+        signInWithEmailLink(auth, email, window.location.href)
+          .then((user) => {
+            console.log('user signed in with email!', user)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+    }
+  }, [])
   return (
     <>
       <Head>
