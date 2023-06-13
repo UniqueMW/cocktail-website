@@ -1,28 +1,17 @@
 import React from 'react'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from 'firebase.config'
 import { TfiMenu } from 'react-icons/tfi'
 import { BiBookmarks } from 'react-icons/bi'
 import { Logo, NavLink, UserProfile } from 'components'
+import { useAuth } from 'hooks'
 interface IMobileNavProps {
   setOpenMenu: (arg: boolean) => void
 }
 function MobileNav(props: IMobileNavProps): JSX.Element {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false)
   const handleMenu = (): void => {
     props.setOpenMenu(true)
   }
 
-  React.useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user !== null) {
-        setIsAuthenticated(true)
-        console.log('user added!!!!', user)
-      } else {
-        setIsAuthenticated(false)
-      }
-    })
-  }, [])
+  const [isAuthenticated] = useAuth()
 
   return (
     <nav

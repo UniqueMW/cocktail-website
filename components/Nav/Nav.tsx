@@ -1,21 +1,10 @@
 import React from 'react'
 import { NavLink, SearchBar, Logo, UserProfile } from 'components'
 import { BiBookmarks } from 'react-icons/bi'
-import { auth } from 'firebase.config'
-import { onAuthStateChanged } from 'firebase/auth'
-function Nav(): JSX.Element {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false)
+import { useAuth } from 'hooks'
 
-  React.useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user !== null) {
-        setIsAuthenticated(true)
-        console.log('user added!!!!', user)
-      } else {
-        setIsAuthenticated(false)
-      }
-    })
-  }, [])
+function Nav(): JSX.Element {
+  const [isAuthenticated] = useAuth()
 
   return (
     <nav className="lg:flex hidden flex-row justify-between items-center lg:px-10 px-10">

@@ -1,8 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
-import { auth } from 'firebase.config'
+import Link from 'next/link'
 import { BiUser } from 'react-icons/bi'
 import { globalStateContext } from 'pages/_app.page'
+import { useAuth } from 'hooks'
 
 interface IUserProfileProps {
   isAuthenticated: boolean
@@ -10,6 +11,7 @@ interface IUserProfileProps {
 
 function UserProfile(props: IUserProfileProps): JSX.Element {
   const globalContext = React.useContext(globalStateContext)
+  const [, user] = useAuth()
   const handleOpenAuthBox = (): void => {
     if (typeof globalContext !== 'undefined') {
       globalContext.dispatch({ type: 'OPENAUTHBOX', payload: true })
@@ -18,19 +20,25 @@ function UserProfile(props: IUserProfileProps): JSX.Element {
   }
 
   if (props.isAuthenticated) {
-    const userImageUrl = auth.currentUser?.photoURL
+    const userImageUrl = user?.photoURL
     if (typeof userImageUrl === 'string') {
       return (
-        <Image
-          src={userImageUrl}
-          alt="User Profile Image"
-          width={48}
-          height={48}
-          className="rounded-full"
-        />
+        <Link href="/profile" className="min-w-fit min-h-fit">
+          <Image
+            src={userImageUrl}
+            alt="User Profile Image"
+            width={48}
+            height={48}
+            className="rounded-full"
+          />
+        </Link>
       )
     }
-    return <BiUser className="text-6xl" />
+    return (
+      <Link href="/profile" className="min-w-fit min-h-fit">
+        <BiUser className="text-6xl" />
+      </Link>
+    )
   }
 
   return (
