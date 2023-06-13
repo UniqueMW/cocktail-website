@@ -83,7 +83,7 @@ function AuthBox(): JSX.Element {
       onClick={handleHideAuthBox}
     >
       <section
-        className=" z-40 text-heading bg-background shadow-lg md:w-1/3 w-11/12 py-5 px-10"
+        className=" z-40 text-heading bg-background shadow-lg md:w-1/3 w-11/12 py-5 px-10 space-y-6"
         onClick={(event) => {
           event.stopPropagation()
         }}
@@ -144,20 +144,20 @@ function AuthBox(): JSX.Element {
             <h1 className="text-lg text-heading font-heading">or</h1>
             <div className=" border-b border-action h-1 w-32"></div>
           </div>
-          <div className="flex flex-col items-center space-y-2">
-            <h2 className="text-paragraph font-paragraph text-base tracking-wide capitalize">
-              Social Media Sign up or in
-            </h2>
-            <div className="space-x-2">
-              <button onClick={handleTwitterAuth}>
-                <BsTwitter className="text-[#1DA1F2] text-3xl" />
-              </button>
-              <button onClick={handleGoogleAuth}>
-                <FcGoogle className="text-3xl" />
-              </button>
-            </div>
-          </div>
         </form>
+        <div className="flex flex-col items-center space-y-2">
+          <h2 className="text-paragraph font-paragraph text-base tracking-wide capitalize">
+            Social Media Sign up or in
+          </h2>
+          <div className="space-x-2">
+            <button onClick={handleTwitterAuth}>
+              <BsTwitter className="text-[#1DA1F2] text-3xl" />
+            </button>
+            <button onClick={handleGoogleAuth}>
+              <FcGoogle className="text-3xl" />
+            </button>
+          </div>
+        </div>
       </section>
     </div>
   )

@@ -1,21 +1,29 @@
 import React from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from 'firebase.config'
 import { TfiMenu } from 'react-icons/tfi'
 import { BiBookmarks } from 'react-icons/bi'
-import { FaRegUser } from 'react-icons/fa'
-import { Logo, NavLink } from 'components'
-import { globalStateContext } from 'pages/_app.page'
+import { Logo, NavLink, UserProfile } from 'components'
 interface IMobileNavProps {
   setOpenMenu: (arg: boolean) => void
 }
 function MobileNav(props: IMobileNavProps): JSX.Element {
-  const globalContext = React.useContext(globalStateContext)
-  const handleOpenAuthBox = (): void => {
-    globalContext?.dispatch({ type: 'OPENAUTHBOX', payload: true })
-  }
-
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false)
   const handleMenu = (): void => {
     props.setOpenMenu(true)
   }
+
+  React.useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user !== null) {
+        setIsAuthenticated(true)
+        console.log('user added!!!!', user)
+      } else {
+        setIsAuthenticated(false)
+      }
+    })
+  }, [])
+
   return (
     <nav
       className={`flex lg:hidden flex-row justify-between items-center px-2 h-fit`}
@@ -28,12 +36,7 @@ function MobileNav(props: IMobileNavProps): JSX.Element {
         <NavLink href="/bookmark" icon>
           <BiBookmarks />
         </NavLink>
-        <button
-          className="border border-heading rounded-full text-heading font-heading min-w-fit p-3 flex flex-row items-center tracking-wider"
-          onClick={handleOpenAuthBox}
-        >
-          <FaRegUser />
-        </button>
+        <UserProfile isAuthenticated={isAuthenticated} />
       </div>
     </nav>
   )

@@ -14,6 +14,7 @@ function SearchBox(): JSX.Element {
     byIngredient: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=gin'
   })
   const [searchValue, setSearchValue] = React.useState<string>()
+  const searchInputRef = React.useRef<HTMLInputElement>(null)
   const randomDrinkUrl =
     'https://www.thecocktaildb.com/api/json/v1/1/random.php'
   const router = useRouter()
@@ -22,17 +23,23 @@ function SearchBox(): JSX.Element {
     context.dispatch({ type: 'OPENSEARCHBOX', payload: false })
   }
 
-  const handleSearchInput = (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ): void => {
-    const target = event.target as HTMLInputElement
+  const autoSuggestion = React.useCallback(
     debounce(() => {
-      setSearchValue(target?.value)
-      setSearchBoxSuggestionsUrl({
-        byName: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${target.value}`,
-        byIngredient: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${target.value}`
-      })
-    }, 100)()
+      const searchInput = searchInputRef.current
+      if (searchInput !== null) {
+        const value = searchInput?.value
+        setSearchValue(value)
+        setSearchBoxSuggestionsUrl({
+          byName: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`,
+          byIngredient: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${value}`
+        })
+      }
+    }, 500),
+    []
+  )
+
+  const handleSearchInput = (): void => {
+    autoSuggestion()
   }
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -77,6 +84,7 @@ function SearchBox(): JSX.Element {
             placeholder={`Try ${inputSuggestion}`}
             className="bg-background w-full px-1 h-11 text-base tracking wide text-heading font-heading border border-heading focus:outline"
             onKeyDown={handleSearchInput}
+            ref={searchInputRef}
           />
           <button
             className="p-2 border border-heading text-heading h-11"
