@@ -5,7 +5,10 @@ import { FcGoogle } from 'react-icons/fc'
 import {
   GoogleAuthProvider,
   TwitterAuthProvider,
+  browserLocalPersistence,
+  browserSessionPersistence,
   sendSignInLinkToEmail,
+  setPersistence,
   signInWithPopup
 } from 'firebase/auth'
 import { auth } from 'firebase.config'
@@ -23,6 +26,7 @@ import { auth } from 'firebase.config'
 function AuthBox(): JSX.Element {
   const formRef = React.useRef<HTMLFormElement>(null)
   const [isEmailSent, setIsEmailSent] = React.useState(false)
+  const [persistUser, setPersistUser] = React.useState(false)
   const globalContext = React.useContext(globalStateContext)
 
   const actionCodeSettings = {
@@ -75,6 +79,34 @@ function AuthBox(): JSX.Element {
       })
   }
 
+  const handleRememberMe = (
+    event: React.MouseEvent<HTMLInputElement>
+  ): void => {
+    const target = event.target as HTMLInputElement
+    const isChecked = target.checked
+    setPersistUser(isChecked)
+  }
+
+  React.useEffect(() => {
+    if (!persistUser) {
+      setPersistence(auth, browserSessionPersistence)
+        .then(() => {
+          console.log('dont remember')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    } else {
+      setPersistence(auth, browserLocalPersistence)
+        .then(() => {
+          console.log('remember')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  }, [persistUser])
+
   return (
     <div
       className={`${
@@ -104,7 +136,7 @@ function AuthBox(): JSX.Element {
           <div className="flex flex-col space-y-2 w-full">
             <div>
               <label
-                htmlFor="email"
+                htmlFor="userEmail"
                 className="text-base font-heading tracking-wider"
               >
                 Email Address
@@ -125,6 +157,15 @@ function AuthBox(): JSX.Element {
               received any Email try signing in or up again.
             </p>
           ) : null}
+          <div className="flex flex-row items-center w-full text-heading font-heading tracking-wider space-x-2">
+            <input
+              type="checkbox"
+              id="rememberMe"
+              className="appearance-none border w-4 h-4 checked:bg-action border-paragraph"
+              onClick={handleRememberMe}
+            />
+            <label htmlFor="rememberMe">Remember me</label>
+          </div>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-2 text-heading font-paragraph text-sm tracking-wider">
             <button
               className="px-6 bg-action py-3 uppercase"
