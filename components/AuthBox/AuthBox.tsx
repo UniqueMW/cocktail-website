@@ -57,7 +57,7 @@ function AuthBox(): JSX.Element {
     const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider)
       .then((user) => {
-        console.log('user signed in with google', user)
+        console.log('user signed in with google')
       })
       .catch((error) => {
         console.log(error)

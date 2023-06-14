@@ -23,6 +23,7 @@ import ContactInput from './ContactInput/ContactInput'
 import SocialCards from './SocialCards/SocialCards'
 import AuthBox from './AuthBox/AuthBox'
 import UserProfile from './UserProfile/UserProfile'
+import ProfileField from './ProfileField/ProfileField'
 import PageFilterGrid, {
   FilterCardContext
 } from './PageFilterGrid/PageFilterGrid'
@@ -54,5 +55,6 @@ export {
   ContactInput,
   SocialCards,
   AuthBox,
-  UserProfile
+  UserProfile,
+  ProfileField
 }
