@@ -16,7 +16,6 @@ function UserProfile(props: IUserProfileProps): JSX.Element {
     if (typeof globalContext !== 'undefined') {
       globalContext.dispatch({ type: 'OPENAUTHBOX', payload: true })
     }
-    console.log('clicked')
   }
 
   if (props.isAuthenticated) {

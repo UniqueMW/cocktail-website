@@ -34,11 +34,9 @@ function AuthBox(): JSX.Element {
       throw new Error('No form')
     }
     const email = formRef.current.userEmail.value
-    console.log(email, 'entered')
 
     sendSignInLinkToEmail(auth, email, actionCodeSettings)
       .then(() => {
-        console.log('Email sent')
         setIsEmailSent(true)
         localStorage.setItem('userEmail', email)
       })
@@ -50,7 +48,7 @@ function AuthBox(): JSX.Element {
   const handleGoogleAuth = (): void => {
     const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider)
-      .then((user) => {
+      .then(() => {
         console.log('user signed in with google')
       })
       .catch((error) => {
@@ -61,8 +59,8 @@ function AuthBox(): JSX.Element {
   const handleTwitterAuth = (): void => {
     const provider = new TwitterAuthProvider()
     signInWithPopup(auth, provider)
-      .then((user) => {
-        console.log('user signed in with twitter.', user)
+      .then(() => {
+        console.log('user signed in with twitter.')
       })
       .catch((error) => {
         console.log(error)
