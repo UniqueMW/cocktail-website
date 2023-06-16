@@ -2,17 +2,31 @@ import React from 'react'
 import Head from 'next/head'
 import { Grid, SocialCards } from 'components'
 import type { IRandomDrink } from 'types'
+import { useAuth } from 'hooks'
+import { getAllDrinksInDatabase } from 'utils'
 
 function BookmarkPage(): JSX.Element {
   const [drinks, setDrinks] = React.useState<IRandomDrink[]>([])
+  const [isAuthenticated, user] = useAuth()
 
   React.useEffect(() => {
-    const stringifiedDrinks = localStorage.getItem('uniqueMWDrinks')
-    if (typeof stringifiedDrinks === 'string') {
-      const drinksList = JSON.parse(stringifiedDrinks)
-      setDrinks(drinksList)
+    console.log(isAuthenticated)
+    if (isAuthenticated && user !== null) {
+      getAllDrinksInDatabase(user.uid)
+        .then((value) => {
+          setDrinks(value)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    } else {
+      const stringifiedDrinks = localStorage.getItem('uniqueMWDrinks')
+      if (typeof stringifiedDrinks === 'string') {
+        const drinksList = JSON.parse(stringifiedDrinks)
+        setDrinks(drinksList)
+      }
     }
-  }, [])
+  }, [isAuthenticated, user])
   return (
     <>
       <Head>

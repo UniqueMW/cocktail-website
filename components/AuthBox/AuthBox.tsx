@@ -13,16 +13,6 @@ import {
 } from 'firebase/auth'
 import { auth } from 'firebase.config'
 
-/**
- * should have a seperate sign up page
- * which requires a fullname
- * should have a profile page
- * add remember me feature
- * forget password feature
- * add facebook sign in
- * show user image on nav
- */
-
 function AuthBox(): JSX.Element {
   const formRef = React.useRef<HTMLFormElement>(null)
   const [isEmailSent, setIsEmailSent] = React.useState(false)

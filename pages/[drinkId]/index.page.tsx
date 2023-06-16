@@ -12,8 +12,17 @@ import type { IRandomDrink } from 'types'
 import type { GetServerSideProps } from 'next'
 import React from 'react'
 import Image from 'next/image'
-import { addAndRemove, checkDrinkInBookmark, groupValues } from 'utils'
+import {
+  addAndRemove,
+  addAndRemoveDrinkInDatabase,
+  checkDrinkInBookmark,
+  checkDrinkInDatabase,
+  groupValues
+} from 'utils'
 import Head from 'next/head'
+import { ref } from 'firebase/database'
+import { database } from 'firebase.config'
+import { useAuth } from 'hooks'
 
 interface IDrinkDetailPageProps {
   drink: IRandomDrink
@@ -21,6 +30,7 @@ interface IDrinkDetailPageProps {
 
 function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
   const [isBookmarked, setIsBookmarked] = React.useState<boolean>()
+  const [isAuthenticated, user] = useAuth()
 
   const ingredientList = React.useMemo(() => {
     const groupArray = groupValues(drink, 'strIngredient')
@@ -43,9 +53,34 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
     setIsBookmarked(checkDrinkInBookmark(drink))
   }, [])
 
-  const handleLocalStorage = (): void => {
-    addAndRemove(drink)
-    setIsBookmarked(checkDrinkInBookmark(drink))
+  const handleBookmarksStorage = async (): Promise<void> => {
+    if (isAuthenticated && user !== null) {
+      const uid = user.uid
+      await addAndRemoveDrinkInDatabase(drink, uid)
+      const databaseResults = await checkDrinkInDatabase(
+        drink.idDrink,
+        ref(database, `bookmarks/${uid}`)
+      )
+
+      if (typeof databaseResults === 'boolean') {
+        setIsBookmarked(false)
+      } else {
+        setIsBookmarked(true)
+      }
+    } else {
+      addAndRemove(drink)
+      setIsBookmarked(checkDrinkInBookmark(drink))
+    }
+  }
+
+  const handleBookmarksStorageWrapper = (): void => {
+    handleBookmarksStorage()
+      .then(() => {
+        console.log()
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   return (
@@ -86,7 +121,7 @@ function DrinkDetailPage({ drink }: IDrinkDetailPageProps): JSX.Element {
           <InstructionSection instruction={drink.strInstructions} />
           <IngredientsSection>{ingredientList}</IngredientsSection>
           <div className="flex flex-row justify-center text-base">
-            <Button clickEvent={handleLocalStorage}>
+            <Button clickEvent={handleBookmarksStorageWrapper}>
               {/* eslint-disable-next-line */}
               {isBookmarked ? (
                 <BsBookmarksFill className="text-heading" />

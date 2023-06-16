@@ -6,6 +6,11 @@ import reducer from './reducer/reducer'
 import addAndRemove, {
   checkDrinkInBookmark
 } from './BookmarkInterface/BookmarkInterface'
+import {
+  addAndRemoveDrinkInDatabase,
+  checkDrinkInDatabase,
+  getAllDrinksInDatabase
+} from './databaseBookmark/databaseBookmark'
 
 export {
   randomize,
@@ -14,5 +19,8 @@ export {
   addAndRemove,
   checkDrinkInBookmark,
   debounce,
-  reducer
+  reducer,
+  addAndRemoveDrinkInDatabase,
+  checkDrinkInDatabase,
+  getAllDrinksInDatabase
 }
